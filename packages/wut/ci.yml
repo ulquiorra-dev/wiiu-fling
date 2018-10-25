@@ -1,7 +1,7 @@
 build-wut:
     stage: toolchain
     script:
-        - cd packages/wut
+        - cd $CI_PROJECT_DIR/packages/wut
         - chmod -R 0777 .
 #       Set up a builduser, because makepkg -_-
         - useradd builduser -m

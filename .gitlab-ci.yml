@@ -21,7 +21,7 @@ pages:
     stage: deploy
     # Override the usual script to avoid wasting time installing dkp
     before_script:
-        - echo Woop woop!
+        - cd $CI_PROJECT_DIR
     script:
         - ls -Rl packages/
         - mkdir -p public && cp packages/*/*.pkg* public/
