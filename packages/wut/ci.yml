@@ -1,0 +1,20 @@
+build-wut:
+    stage: toolchain
+    script:
+        - cd packages/wut
+        - chmod -R 0777 .
+#       Set up a builduser, because makepkg -_-
+        - useradd builduser -m
+        - passwd -d builduser
+        - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
+#       Build!
+        - sudo -u builduser makepkg -s --noconfirm
+    artifacts:
+        paths:
+            - 'packages/wut/*.pkg*'
+#    only:
+#        changes:
+#            - 'packages/wut/PKGBUILD'
+#            - 'packages/wut/ci.yml'
+#        variables:
+#            - $TRY_CACHE == "yes"

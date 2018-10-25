@@ -1,0 +1,37 @@
+# Not using base/devel because it has linux-firmware for some reason
+image: base/archlinux:latest
+
+variables:
+    TRY_CACHE: "no"
+
+include:
+    - '/packages/wut/ci.yml'
+
+stages:
+    - toolchain
+    - libraries
+    - libraries2
+    - deploy
+
+before_script:
+    - cd dkp && chmod +x install-dkp.sh && ./install-dkp.sh
+    - pacman -S --noconfirm base-devel
+
+pages:
+    stage: deploy
+    # Override the usual script to avoid wasting time installing dkp
+    before_script:
+        - echo Woop woop!
+    script:
+        - ls -Rl packages/
+        - mkdir -p public && cp packages/*/*.pkg* public/
+        - ls -Rl public/
+        - cd public && repo-add wiiu-stuff.db.tar.gz *.pkg*
+    artifacts:
+        paths:
+            - 'public'
+    only:
+        - master
+#    cache:
+#        paths:
+#            - packages/*/*.pkg*
