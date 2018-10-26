@@ -25,9 +25,9 @@ pages:
         - gpg --batch --import fling-key.pub
         - echo "$FLING_SIGN_KEY" | gpg --batch --import
     script:
-        - mkdir -p public && cp packages/*/*.pkg* public/
-        - cd public && gpg --batch --detach-sign *.pkg*
-        - cd public && repo-add wiiu-stuff.db.tar.gz *.pkg*
+        - mkdir -p $CI_PROJECT_DIR/public && cp $CI_PROJECT_DIR/packages/*/*.pkg* $CI_PROJECT_DIR/public/
+        - cd $CI_PROJECT_DIR/public && gpg --batch --detach-sign *.pkg*
+        - cd $CI_PROJECT_DIR/public && repo-add --sign wiiu-stuff.db.tar.gz *.pkg*
     artifacts:
         paths:
             - 'public'
