@@ -1,7 +1,7 @@
 build-libiosuhax:
     stage: libraries
     script:
-        - pacman --noconfirm --needed $CI_PROJECT_DIR/packages/wut/*.pkg*
+        - pacman --noconfirm -U $CI_PROJECT_DIR/packages/wut/*.pkg*
         - source /etc/profile.d/*
         - cd $CI_PROJECT_DIR/packages/libiosuhax
         - chmod -R 0777 .
