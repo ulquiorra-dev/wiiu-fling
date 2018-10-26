@@ -28,7 +28,7 @@ pages:
         - mkdir -p $CI_PROJECT_DIR/public && cp $CI_PROJECT_DIR/packages/*/*.pkg* $CI_PROJECT_DIR/public/
         - cp fling-key.pub $CI_PROJECT_DIR/public/
         - cd $CI_PROJECT_DIR/public && gpg --batch --detach-sign *.pkg*
-        - cd $CI_PROJECT_DIR/public && repo-add --sign wiiu-fling.db.tar.gz `find . -name '*.pkg*' -a ! -name '*.sig'`
+        - cd $CI_PROJECT_DIR/public && repo-add --sign wiiu-fling-linux.db.tar.gz `find . -name '*.pkg*' -a ! -name '*.sig'`
     artifacts:
         paths:
             - 'public'
