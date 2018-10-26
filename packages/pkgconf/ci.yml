@@ -8,7 +8,7 @@ build-pkgconf:
         - passwd -d builduser
         - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
 #       Build!
-        - sudo -u builduser makepkg -s --noconfirm
+        - sudo -E -u builduser makepkg -s --noconfirm
     artifacts:
         paths:
             - 'packages/pkgconf/*.pkg*'
