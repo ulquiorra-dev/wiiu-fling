@@ -2,7 +2,7 @@
 
 _destdir=/opt/wut
 
-pkgname=wiiu-wut
+pkgname=wut-linux
 pkgver=1.0.0_beta5
 _gittag=1.0.0-beta5
 pkgrel=1
@@ -11,7 +11,7 @@ pkgdesc="Open-source Wii U Toolchain for creating rpx/rpl"
 arch=('x86_64' 'i686')
 url="https://github.com/decaf-emu/wut"
 license=('GPL2')
-groups=('wiiu-tools')
+groups=('wiiu-tools-linux')
 
 # These depend lines are for dkp-pacman, use the others for the AUR or w/e
 depends=('devkitPPC')
