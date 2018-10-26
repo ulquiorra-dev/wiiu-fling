@@ -1,0 +1,40 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+# Mostly copied from Arch's PKGBUILD:
+# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/pkgconf
+
+pkgname=wiiu-libiosuhax
+pkgver=0.3
+_gittag=v0.3
+pkgrel=1
+pkgdesc="PowerPC library to access iosuhax and a devoptab for any device/path"
+url="https://github.com/dimok789/libiosuhax"
+license=("custom")
+arch=("x86_64" "i686")
+depends=("devkitPPC")
+makedepends=("git")
+groups=("wiiu-libs")
+source=("$pkgname::git+https://github.com/dimok789/libiosuhax#tag=$_gittag"
+        "iosuhaxv0.3-custinstallloc.patch")
+md5sums=("SKIP"
+         "c3bc59edf892dcf9de2718855de09473")
+
+_prefix="/opt/devkitpro/devkitPPC/portlibs/wiiu"
+
+prepare() {
+    patch $pkgname/Makefile < iosuhaxv0.3-custinstallloc.patch
+}
+
+build() {
+    cd $pkgname
+    make wut
+}
+
+package() {
+    install -d "$pkgdir/$_prefix/lib"
+    install -d "$pkgdir/$_prefix/include"
+
+    echo $WIIULIBS_PATH
+
+    cd $pkgname
+    make install LIBINSTALL="$pkgdir/$_prefix/lib" HDRINSTALL="$pkgdir/$_prefix/include"
+}
