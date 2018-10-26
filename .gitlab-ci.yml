@@ -3,8 +3,6 @@ image: base/archlinux:latest
 
 variables:
     TRY_CACHE: "no"
-    PORTLIBS_PATH: "/opt/devkitpro/portlibs/ppc"
-    WIIULIBS_PATH: "/opt/devkitpro/portlibs/wiiu"
 
 include:
     - '/packages/wut/ci.yml'

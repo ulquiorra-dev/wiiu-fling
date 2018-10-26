@@ -17,7 +17,7 @@ groups=("wiiu-tools-linux")
 source=("$pkgname::git+https://git.dereferenced.org/pkgconf/pkgconf.git#tag=$_gittag")
 md5sums=("SKIP")
 
-_pcdirs=$PORTLIBS_PATH/lib/pkgconfig:$WIIULIBS_PATH/lib/pkgconfig
+_pcdirs=/opt/devkitpro/devkitPPC/portlibs/ppc/lib/pkgconfig:/opt/devkitpro/devkitPPC/portlibs/wiiu/lib/pkgconfig
 _libdirs=/opt/devkitpro/devkitPPC/powerpc-eabi/lib
 _includedirs=/opt/devkitpro/devkitPPC/powerpc-eabi/include
 
