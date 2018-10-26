@@ -21,7 +21,7 @@ makedepends=('cmake' 'zlib' 'gcc-libs' 'gcc' 'git')
 #makedepends=('gcc' 'git')
 
 # Update this when makefile wut gets merged
-provides=('wiiu-wut-cmake')
+provides=('wiiu-wut-cmake' 'wiiu-wut')
 source=("git+https://github.com/decaf-emu/wut.git#tag=$_gittag")
 md5sums=('SKIP')
 options=("!strip" "staticlibs")
