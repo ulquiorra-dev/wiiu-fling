@@ -18,4 +18,4 @@ pacman --noconfirm -U https://downloads.devkitpro.org/devkitpro-keyring-r1.787e0
 
 pacman --noconfirm -Sy
 
-pacman --noconfirm -S devkit-env
+pacman --noconfirm --needed -S devkit-env
