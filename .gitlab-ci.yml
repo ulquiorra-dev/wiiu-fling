@@ -8,6 +8,7 @@ variables:
 
 include:
     - '/packages/wut/ci.yml'
+    - '/packages/pkgconf/ci.yml'
 
 stages:
     - toolchain # Essential toolchain bits - wut etc.
