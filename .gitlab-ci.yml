@@ -3,14 +3,16 @@ image: base/archlinux:latest
 
 variables:
     TRY_CACHE: "no"
+    PORTLIBS_PATH: "/devkitpro/portlibs/ppc"
+    WIIULIBS_PATH: "/devkitpro/portlibs/wiiu"
 
 include:
     - '/packages/wut/ci.yml'
 
 stages:
-    - toolchain
-    - libraries
-    - libraries2
+    - toolchain # Essential toolchain bits - wut etc.
+    - libraries # Libraries or groups of libraries that stand alone
+    - libraries2 # Libraries that depend on things from "libraries"
     - deploy
 
 before_script:

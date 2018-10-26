@@ -1,0 +1,50 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+# Mostly copied from Arch's PKGBUILD:
+# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/pkgconf
+
+pkgname=wiiu-pkgconf-linux
+_binprefix=wiiu
+pkgver=1.5.4
+_gittag=pkgconf-1.5.4
+pkgrel=1
+pkgdesc="Finds libraries and catalogues compile flags for Wii U libraries"
+url="https://git.dereferenced.org/pkgconf/pkgconf"
+license=("custom:ISC")
+arch=("x86_64" "i686")
+depends=("devkitPPC")
+makedepends=("git")
+groups=("wiiu-tools-linux")
+source=("$pkgname::git+https://git.dereferenced.org/pkgconf/pkgconf.git#tag=$_gittag")
+md5sums=("SKIP")
+
+_pcdirs=$PORTLIBS_PATH/lib/pkgconfig:$WIIULIBS_PATH/lib/pkgconfig
+_libdirs=/opt/devkitpro/devkitPPC/powerpc-eabi/lib
+_includedirs=/opt/devkitpro/devkitPPC/powerpc-eabi/include
+
+prepare() {
+    mkdir -p build
+    cd $pkgname
+    ./autogen.sh
+}
+
+build() {
+    cd build
+    # Mute claims these paths are standardised now, so okay then
+    ../$pkgname/configure \
+        --prefix="/opt/devkitpro/devkitPPC" \
+        --with-sysroot="/opt/devkitpro/devkitPPC" \
+        --program-prefix="$_binprefix-" \
+        --with-pkg-config-dir="$_pcdirs" \
+        --with-system-libdir="$_libdirs" \
+        --with-system-includedir="$_includedirs" \
+        --disable-shared #no support in devkitPPC
+    make
+}
+
+package() {
+    DESTDIR="$pkgdir" make -C build install
+
+    install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgname/COPYING
+    ln -s "$_binprefix-pkgconf" "$pkgdir/opt/devkitpro/devkitPPC/bin/$_binprefix-pkg-config"
+    ln -s "$_binprefix-pkgconf.1" "$pkgdir/opt/devkitpro/devkitPPC/share/man/man1/$_binprefix-pkg-config.1"
+}
