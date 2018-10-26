@@ -27,7 +27,7 @@ pages:
     script:
         - mkdir -p $CI_PROJECT_DIR/public && cp $CI_PROJECT_DIR/packages/*/*.pkg* $CI_PROJECT_DIR/public/
         - cd $CI_PROJECT_DIR/public && gpg --batch --detach-sign *.pkg*
-        - cd $CI_PROJECT_DIR/public && repo-add --sign wiiu-stuff.db.tar.gz *.pkg*
+        - cd $CI_PROJECT_DIR/public && repo-add --sign wiiu-stuff.db.tar.gz `find . -name '*.pkg*' -a ! -name '*.sig'`
     artifacts:
         paths:
             - 'public'
