@@ -1,5 +1,4 @@
-# Not using base/devel because it has linux-firmware for some reason
-image: base/archlinux:latest
+image: registry.example.com/QuarkTheAwesome/wiiu-fling/ci:latest
 
 variables:
     TRY_CACHE: "no"
@@ -10,18 +9,14 @@ include:
     - '/packages/libiosuhax/ci.yml'
 
 stages:
+    - container # Docker bits
     - toolchain # Essential toolchain bits - wut etc.
     - libraries # Libraries or groups of libraries that stand alone
     - libraries2 # Libraries that depend on things from "libraries"
     - deploy
 
-before_script:
-    - cd dkp && chmod +x install-dkp.sh && ./install-dkp.sh
-    - pacman -S --needed --noconfirm base-devel
-
 pages:
     stage: deploy
-    # Override the usual script to avoid wasting time installing dkp
     before_script:
         - cd $CI_PROJECT_DIR
         - gpg --batch --import fling-key.pub
@@ -39,3 +34,17 @@ pages:
 #    cache:
 #        paths:
 #            - packages/*/*.pkg*
+
+arch_container:
+    stage: container
+    image: docker:stable
+    services:
+        - docker:dind
+    script:
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+        - docker build -t registry.gitlab.com/QuarkTheAwesome/wiiu-fling/ci:latest .
+        - docker push registry.gitlab.com/QuarkTheAwesome/wiiu-fling/ci:latest
+    only:
+        - master
+        changes:
+            - Dockerfile
