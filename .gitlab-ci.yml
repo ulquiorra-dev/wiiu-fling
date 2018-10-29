@@ -42,8 +42,8 @@ arch_container:
         - docker:dind
     script:
         - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-        - docker build -t registry.gitlab.com/QuarkTheAwesome/wiiu-fling/ci:latest .
-        - docker push registry.gitlab.com/QuarkTheAwesome/wiiu-fling/ci:latest
+        - docker build -t registry.gitlab.com/quarktheawesome/wiiu-fling/ci:latest .
+        - docker push registry.gitlab.com/quarktheawesome/wiiu-fling/ci:latest
     only:
         changes:
             - Dockerfile
