@@ -12,8 +12,8 @@ build-curl-headers:
     artifacts:
         paths:
             - 'packages/curl-headers/*.pkg*'
-    only:
-        changes:
-            - 'packages/curl-headers/PKGBUILD'
-            - 'packages/curl-headers/ci.yml'
-            - 'packages/curl-headers/curl.h'
+ #   only:
+ #       changes:
+ #           - 'packages/curl-headers/PKGBUILD'
+ #           - 'packages/curl-headers/ci.yml'
+ #           - 'packages/curl-headers/curl.h'

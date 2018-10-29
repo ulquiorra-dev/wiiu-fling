@@ -1,9 +1,9 @@
 build-libdynamiclibs:
     stage: libraries
     script:
-        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-wut -O wut.zip && unzip wut.zip
-        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-curl-headers -O curl.zip && unzip curl.zip
-        - pacman --noconfirm -U packages/*/*.pkg*
+#        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-wut -O wut.zip && unzip wut.zip
+#        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-curl-headers -O curl.zip && unzip curl.zip
+        - pacman --noconfirm -U packages/wut/*.pkg* packages/curl-headers/*.pkg*
         - source /etc/profile.d/*
         - cd $CI_PROJECT_DIR/packages/libdynamiclibs
         - chmod -R 0777 .
@@ -16,8 +16,8 @@ build-libdynamiclibs:
     artifacts:
         paths:
             - 'packages/libdynamiclibs/*.pkg*'
-    only:
-        changes:
-            - 'packages/libdynamiclibs/PKGBUILD'
-            - 'packages/libdynamiclibs/ci.yml'
-            - 'packages/libdynamiclibs/iosuhaxv0.3-custinstallloc.patch'
+#    only:
+#        changes:
+#            - 'packages/libdynamiclibs/PKGBUILD'
+#            - 'packages/libdynamiclibs/ci.yml'
+#            - 'packages/libdynamiclibs/iosuhaxv0.3-custinstallloc.patch'

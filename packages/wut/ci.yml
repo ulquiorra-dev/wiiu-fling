@@ -12,9 +12,9 @@ build-wut:
     artifacts:
         paths:
             - 'packages/wut/*.pkg*'
-    only:
-        changes:
-            - 'packages/wut/PKGBUILD'
-            - 'packages/wut/ci.yml'
+#    only:
+#        changes:
+#            - 'packages/wut/PKGBUILD'
+#            - 'packages/wut/ci.yml'
 #        variables:
 #            - $TRY_CACHE == "yes"
