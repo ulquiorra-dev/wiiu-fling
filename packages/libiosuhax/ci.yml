@@ -1,7 +1,7 @@
 build-libiosuhax:
     stage: libraries
     script:
-        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-wut -o wut.zip && unzip wut.zip
+        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-wut -O wut.zip && unzip wut.zip
         - pacman --noconfirm -U packages/*/*.pkg*
         - cd $CI_PROJECT_DIR/packages/libiosuhax
         - chmod -R 0777 .
