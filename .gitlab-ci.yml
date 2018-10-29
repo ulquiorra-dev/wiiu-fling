@@ -23,6 +23,7 @@ pages:
         - cd $CI_PROJECT_DIR
         - gpg --batch --import fling-key.pub
         - echo "$FLING_SIGN_KEY" | gpg --batch --import
+        - sed -i "s/bsdtar -xf/tar -xvzf/g" /usr/bin/repo-add #can't believe I'm doing this
     script:
         - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=pages -O out.zip
         - unzip out.zip && cp $CI_PROJECT_DIR/packages/*/*.pkg* $CI_PROJECT_DIR/public/

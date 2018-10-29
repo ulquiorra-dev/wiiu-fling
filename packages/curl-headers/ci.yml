@@ -16,3 +16,4 @@ build-curl-headers:
         changes:
             - 'packages/curl-headers/PKGBUILD'
             - 'packages/curl-headers/ci.yml'
+            - 'packages/curl-headers/curl.h'
