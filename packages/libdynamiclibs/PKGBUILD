@@ -1,0 +1,43 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+# Mostly copied from Arch's PKGBUILD:
+# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/pkgconf
+
+pkgname=wiiu-libdynamiclibs
+pkgver=0.1
+_gittag=v0.1
+pkgrel=1
+pkgdesc="Cafe OS bindings for legacy HBL-ELF homebrew"
+url="https://github.com/Maschell/dynamic_libs"
+license=("custom")
+arch=("x86_64" "i686")
+depends=("devkitPPC" "wiiu-curl-headers")
+makedepends=("git")
+groups=("wiiu-libs")
+options=("staticlibs" "!strip")
+source=("$pkgname::git+https://github.com/Maschell/dynamic_libs#tag=$_gittag"
+        "dynlibsv0.1-cust-portlibs.patch")
+md5sums=("SKIP"
+         "f01de53bf2dab6c84301004f522e38e0")
+
+_prefix="/opt/devkitpro/devkitPPC/portlibs/wiiu"
+
+prepare() {
+    patch $pkgname/Makefile < dynlibsv0.1-cust-portlibs.patch
+}
+
+build() {
+    cd $pkgname
+    # Override portlibs to help find wiiu-curl-headers
+    make PORTLIBS="$_prefix"
+
+    # This compiles with -g for some reason
+    $DEVKITPPC/bin/powerpc-eabi-strip -g release/lib/libdynamiclibs.a
+}
+
+package() {
+    install -d "$pkgdir/$_prefix/lib"
+    install -d "$pkgdir/$_prefix/include"
+
+    cd $pkgname
+    make install PORTLIBS="$pkgdir/$_prefix"
+}

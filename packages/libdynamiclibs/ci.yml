@@ -1,0 +1,25 @@
+build-libdynamiclibs:
+    stage: libraries
+    script:
+        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-wut -o wut.zip && unzip wut.zip
+        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-curl-headers -o curl.zip && unzip curl.zip
+        - pacman --noconfirm -U packages/*/*.pkg*
+        - source /etc/profile.d/*
+        - cd $CI_PROJECT_DIR/packages/libdynamiclibs
+        - chmod -R 0777 .
+#       Set up a builduser, because makepkg -_-
+        - useradd builduser -m
+        - passwd -d builduser
+        - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
+#       Build!
+        - sudo -E -u builduser makepkg -s --noconfirm
+    artifacts:
+        paths:
+            - 'packages/libdynamiclibs/*.pkg*'
+    only:
+        changes:
+            - 'packages/libdynamiclibs/PKGBUILD'
+            - 'packages/libdynamiclibs/ci.yml'
+            - 'packages/libdynamiclibs/iosuhaxv0.3-custinstallloc.patch'
+#        variables:
+#            - $TRY_CACHE == "yes"
