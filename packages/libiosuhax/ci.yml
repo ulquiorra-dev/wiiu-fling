@@ -14,9 +14,10 @@ build-libiosuhax:
     artifacts:
         paths:
             - 'packages/libiosuhax/*.pkg*'
-#    only:
-#        changes:
-#            - 'packages/pkg-config/PKGBUILD'
-#            - 'packages/pkg-config/ci.yml'
+    only:
+        changes:
+            - 'packages/libiosuhax/PKGBUILD'
+            - 'packages/libiosuhax/ci.yml'
+            - 'packages/libiosuhax/iosuhaxv0.3-custinstallloc.patch'
 #        variables:
 #            - $TRY_CACHE == "yes"

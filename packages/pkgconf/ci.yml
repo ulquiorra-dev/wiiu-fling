@@ -12,9 +12,9 @@ build-pkgconf:
     artifacts:
         paths:
             - 'packages/pkgconf/*.pkg*'
-#    only:
-#        changes:
-#            - 'packages/pkgconf/PKGBUILD'
-#            - 'packages/pkgconf/ci.yml'
+    only:
+        changes:
+            - 'packages/pkgconf/PKGBUILD'
+            - 'packages/pkgconf/ci.yml'
 #        variables:
 #            - $TRY_CACHE == "yes"
