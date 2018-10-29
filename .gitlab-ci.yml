@@ -1,4 +1,4 @@
-image: registry.example.com/quarktheawesome/wiiu-fling/ci:latest
+image: registry.gitlab.com/quarktheawesome/wiiu-fling/ci:latest
 
 variables:
     TRY_CACHE: "no"
