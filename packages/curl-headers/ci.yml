@@ -16,5 +16,3 @@ build-curl-headers:
         changes:
             - 'packages/curl-headers/PKGBUILD'
             - 'packages/curl-headers/ci.yml'
-#        variables:
-#            - $TRY_CACHE == "yes"
