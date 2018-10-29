@@ -1,0 +1,39 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+# Mostly copied from Arch's PKGBUILD:
+# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/pkgconf
+
+pkgname=wiiu-curl-headers
+pkgver=7.21.7
+pkgrel=1
+pkgdesc="Cafe-compatible cURL headers"
+url="https://curl.haxx.se"
+license=("MIT")
+arch=("x86_64" "i686")
+depends=()
+makedepends=()
+groups=("wiiu-libs")
+source=("curl.h"
+        "curlbuild.h"
+        "curlrules.h"
+        "curlver.h"
+        "easy.h"
+        "mprintf.h"
+        "multi.h"
+        "stdcheaders.h"
+        "typecheck-gcc.h")
+md5sums=("46b17ff0e980ce2b8ae1228a33f270bb"
+         "7fa26fb8cda8a44abc1974c743601969"
+         "9e7f8b768255827f9bac344297a1d51f"
+         "d2b41ec24cd200fc0cba497486a9fb0a"
+         "0bacb9036436a91bf66c007a56a2f9b9"
+         "aa358cbaa44e19f43cc05ea772d037af"
+         "63dd390e82a97e3115abc2795d9e77ab"
+         "18c029ed6fdad0ce85ac094ca2841515"
+         "8b6fb3f7bce92d5a46903bf96ff693d1")
+
+_prefix="/opt/devkitpro/devkitPPC/portlibs/wiiu"
+
+package() {
+    install -d "$pkgdir/$_prefix/include/curl"
+    install -m0644 *.h "$pkgdir/$_prefix/include/curl"
+}
