@@ -19,5 +19,3 @@ build-libiosuhax:
             - 'packages/libiosuhax/PKGBUILD'
             - 'packages/libiosuhax/ci.yml'
             - 'packages/libiosuhax/iosuhaxv0.3-custinstallloc.patch'
-#        variables:
-#            - $TRY_CACHE == "yes"
