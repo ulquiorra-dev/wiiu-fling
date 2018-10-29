@@ -1,6 +1,6 @@
 #~/bin/bash
 
-for i in *.pkg*; do
+for i in `find . -name '*.pkg*' -a ! -name '*.sig' -a ! -name '*.sig*'`; do
     echo Signing $i...
     gpg --batch --detach-sign $i
 done
