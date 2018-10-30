@@ -29,8 +29,9 @@ pages:
         - echo "$FLING_SIGN_KEY" | gpg --batch --import
         - sed -i "s/bsdtar -xf/tar -xvzf/g" /usr/bin/repo-add #can't believe I'm doing this
     script:
-        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=pages -O out.zip
-        - unzip out.zip && cp $CI_PROJECT_DIR/packages/*/*.pkg* $CI_PROJECT_DIR/public/
+#        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=pages -O out.zip
+#        - unzip out.zip && cp $CI_PROJECT_DIR/packages/*/*.pkg* $CI_PROJECT_DIR/public/
+        - mkdir -p $CI_PROJECT_DIR/public/
         - cp fling-key.pub $CI_PROJECT_DIR/public/
         - cd $CI_PROJECT_DIR/public && chmod +x $CI_PROJECT_DIR/sign-packages.sh && $CI_PROJECT_DIR/sign-packages.sh
         - cd $CI_PROJECT_DIR/public && repo-add --remove --sign wiiu-fling.db.tar.gz `find . -name '*.pkg*' -a ! -name '*.sig'`
