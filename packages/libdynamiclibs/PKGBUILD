@@ -19,7 +19,7 @@ source=("$pkgname::git+https://github.com/Maschell/dynamic_libs#tag=$_gittag"
 md5sums=("SKIP"
          "f01de53bf2dab6c84301004f522e38e0")
 
-_prefix="/opt/devkitpro/devkitPPC/portlibs/wiiu"
+_prefix="/opt/devkitpro/portlibs/wiiu"
 
 prepare() {
     patch $pkgname/Makefile < dynlibsv0.1-cust-portlibs.patch

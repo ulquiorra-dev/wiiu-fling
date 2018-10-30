@@ -31,7 +31,7 @@ md5sums=("46b17ff0e980ce2b8ae1228a33f270bb"
          "18c029ed6fdad0ce85ac094ca2841515"
          "8b6fb3f7bce92d5a46903bf96ff693d1")
 
-_prefix="/opt/devkitpro/devkitPPC/portlibs/wiiu"
+_prefix="/opt/devkitpro/portlibs/wiiu"
 
 package() {
     install -d "$pkgdir/$_prefix/include/curl"
