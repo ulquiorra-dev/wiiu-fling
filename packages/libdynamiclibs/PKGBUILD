@@ -5,7 +5,7 @@
 pkgname=wiiu-libdynamiclibs
 pkgver=0.1
 _gittag=v0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cafe OS bindings for legacy HBL-ELF homebrew"
 url="https://github.com/Maschell/dynamic_libs"
 license=("custom")

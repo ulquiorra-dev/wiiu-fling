@@ -5,7 +5,7 @@
 pkgname=wiiu-libiosuhax
 pkgver=0.3
 _gittag=v0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PowerPC library to access iosuhax and a devoptab for any device/path"
 url="https://github.com/dimok789/libiosuhax"
 license=("custom")

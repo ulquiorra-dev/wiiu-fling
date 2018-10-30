@@ -4,7 +4,7 @@
 
 pkgname=wiiu-curl-headers
 pkgver=7.21.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Cafe-compatible cURL headers"
 url="https://curl.haxx.se"
 license=("MIT")
