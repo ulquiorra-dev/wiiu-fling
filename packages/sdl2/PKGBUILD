@@ -1,0 +1,50 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+# Mostly copied from Arch's PKGBUILD:
+# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/pkgconf
+
+pkgname=wiiu-sdl2
+pkgver=0.1
+_gittag=e275292
+pkgrel=1
+pkgdesc="Finds libraries and catalogues compile flags for Wii U libraries"
+url="https://git.dereferenced.org/pkgconf/pkgconf"
+license=("custom")
+arch=("x86_64" "i686")
+depends=("devkitPPC" "ppc-libjpeg-turbo" "ppc-mpg123" "ppc-libogg" "ppc-libvorbisidec")
+makedepends=("git")
+groups=("wiiu-libs")
+source=("$pkgname::git+https://github.com/rw-r-r-0644/sdl2-wiiu#tag=$_gittag")
+md5sums=("SKIP")
+options=("!buildflags" "!strip" "staticlibs")
+
+_prefix="/opt/devkitpro/portlibs/wiiu"
+
+prepare() {
+    echo nothing to do
+}
+
+build() {
+    cd $pkgname/SDL2-wiiu
+    make -f Makefile.wiiu
+    cd ../SDL2_gfx-1.0.4-wiiu
+    make -f Makefile.wiiu
+    cd ../SDL2_image-2.0.3-wiiu
+    make -f Makefile.wiiu
+    cd ../SDL2_ttf-2.0.14-wiiu
+    make -f Makefile.wiiu
+    cd ../SDL2_mixer-2.0.2-wiiu
+    make -f Makefile.wiiu
+}
+
+package() {
+    cd $pkgname/SDL2-wiiu
+    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
+    cd ../SDL2_gfx-1.0.4-wiiu
+    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
+    cd ../SDL2_image-2.0.3-wiiu
+    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
+    cd ../SDL2_ttf-2.0.14-wiiu
+    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
+    cd ../SDL2_mixer-2.0.2-wiiu
+    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
+}
