@@ -9,6 +9,7 @@ include:
     - '/packages/libiosuhax/ci.yml'
     - '/packages/libdynamiclibs/ci.yml'
     - '/packages/curl-headers/ci.yml'
+    - '/packages/sdl2/ci.yml'
 
 stages:
     - container # Docker bits
