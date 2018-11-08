@@ -10,7 +10,7 @@ pkgdesc="Finds libraries and catalogues compile flags for Wii U libraries"
 url="https://git.dereferenced.org/pkgconf/pkgconf"
 license=("custom")
 arch=("x86_64" "i686")
-depends=("devkitPPC" "ppc-libjpeg-turbo" "ppc-mpg123" "ppc-libogg" "ppc-libvorbisidec")
+depends=("devkitPPC" "ppc-libjpeg-turbo" "ppc-mpg123" "ppc-libogg" "ppc-libvorbisidec" "ppc-libpng" "ppc-freetype")
 makedepends=("git")
 groups=("wiiu-libs")
 source=("$pkgname::git+https://github.com/rw-r-r-0644/sdl2-wiiu#tag=$_gittag")
