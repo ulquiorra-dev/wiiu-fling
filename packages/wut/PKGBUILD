@@ -3,8 +3,8 @@
 _destdir=/opt/wut
 
 pkgname=wut-linux
-pkgver=1.0.0_beta5
-_gittag=1.0.0-beta5
+pkgver=1.0.0_beta6
+_gittag=1.0.0-beta6
 pkgrel=1
 pkgdesc="Open-source Wii U Toolchain for creating rpx/rpl"
 # Should work with other archs too, add if you want
