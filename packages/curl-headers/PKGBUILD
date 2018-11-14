@@ -1,6 +1,4 @@
 # Maintainer: Ash Logan <ash [at] heyquark [dot] com>
-# Mostly copied from Arch's PKGBUILD:
-# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/pkgconf
 
 pkgname=wiiu-curl-headers
 pkgver=7.21.7

@@ -1,13 +1,11 @@
 # Maintainer: Ash Logan <ash [at] heyquark [dot] com>
-# Mostly copied from Arch's PKGBUILD:
-# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/pkgconf
 
 pkgname=wiiu-sdl2
 pkgver=0.1
 _gittag=e275292
 pkgrel=1
-pkgdesc="Finds libraries and catalogues compile flags for Wii U libraries"
-url="https://git.dereferenced.org/pkgconf/pkgconf"
+pkgdesc="Library for portable access to Wii U video, audio, input"
+url="https://github.com/rw-r-r-0644/sdl2-wiiu"
 license=("custom")
 arch=("x86_64" "i686")
 depends=("devkitPPC" "ppc-libjpeg-turbo" "ppc-mpg123" "ppc-libogg" "ppc-libvorbisidec" "ppc-libpng" "ppc-freetype")
