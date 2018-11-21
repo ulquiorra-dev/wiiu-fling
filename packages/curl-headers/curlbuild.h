@@ -53,6 +53,12 @@
  *
  */
 
+#ifdef __WUT__
+#include <nsysnet/socket.h>
+#else
+#include "socket-extras.h"
+#endif
+
 /* ================================================================ */
 /*  DEFINITION OF THESE SYMBOLS SHALL NOT TAKE PLACE ANYWHERE ELSE  */
 /* ================================================================ */
