@@ -10,6 +10,7 @@ include:
     - '/packages/libdynamiclibs/ci.yml'
     - '/packages/curl-headers/ci.yml'
     - '/packages/sdl2/ci.yml'
+    - '/packages/libmad/ci.yml'
 
 stages:
     - container # Docker bits
