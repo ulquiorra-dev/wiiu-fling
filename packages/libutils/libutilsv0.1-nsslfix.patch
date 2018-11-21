@@ -1,0 +1,12 @@
+diff -ura wiiu-libutils.orig/source/network/FileDownloader.cpp wiiu-libutils/source/network/FileDownloader.cpp
+--- wiiu-libutils.orig/source/network/FileDownloader.cpp	2018-11-21 13:40:12.102570214 +1100
++++ wiiu-libutils/source/network/FileDownloader.cpp	2018-11-21 13:41:14.900417356 +1100
+@@ -98,7 +98,7 @@
+         for(int i = 1001; i<1034; i++) {
+             NSSLAddServerPKI(ssl_context,i);
+         }
+-        n_curl_easy_setopt(curl, CURLOPT_GSSAPI_DELEGATION, ssl_context); // Is CURLOPT_NSSL_CONTEXT on the Wii U
++        n_curl_easy_setopt(curl, CURLOPT_NSSL_CONTEXT, ssl_context);
+     }
+
+     n_curl_easy_setopt(curl, CURLOPT_URL, downloadUrl.c_str());

@@ -1,0 +1,17 @@
+diff -ura wiiu-libutils.orig/Makefile wiiu-libutils/Makefile
+--- wiiu-libutils.orig/Makefile	2018-11-21 14:01:03.116418795 +1100
++++ wiiu-libutils/Makefile	2018-11-21 14:01:46.827274932 +1100
+@@ -1,4 +1,4 @@
+-DO_LOGGING := 1
++DO_LOGGING ?= 1
+
+ #---------------------------------------------------------------------------------
+ .SUFFIXES:
+@@ -8,7 +8,7 @@
+ endif
+
+ export PATH			:=	$(DEVKITPPC)/bin:$(PORTLIBS)/bin:$(PATH)
+-export PORTLIBS		:=	$(DEVKITPRO)/portlibs/ppc
++export PORTLIBS		?=	$(DEVKITPRO)/portlibs/ppc
+
+ PREFIX	:=	powerpc-eabi-

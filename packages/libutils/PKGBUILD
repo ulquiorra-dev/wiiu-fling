@@ -1,0 +1,45 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+pkgname=wiiu-libutils
+pkgver=0.1
+_gittag=v0.1
+pkgrel=1
+pkgdesc="Utilities library for legacy HBL-ELF homebrew"
+url="https://github.com/Maschell/libutils"
+license=("custom")
+arch=("x86_64" "i686")
+depends=("devkitPPC" "wiiu-libdynamiclibs")
+makedepends=("git")
+groups=("wiiu-libs")
+options=("staticlibs" "!strip")
+source=("$pkgname::git+https://github.com/Maschell/libutils#tag=$_gittag"
+        "libutilsv0.1-makefile.patch"
+        "libutilsv0.1-nsslfix.patch")
+sha256sums=("SKIP"
+            "4c591eefb81f1b07d24cf7a44f0f4825d8286ef94a5f50d020f430791cbc88d8"
+            "59478d7c7ed352d080680582f77bbcec180007cce67ecd22c69e29d6640eb5f1")
+
+_prefix="/opt/devkitpro/portlibs/wiiu"
+
+prepare() {
+    cd $srcdir/$pkgname
+    patch -p1 -i "$srcdir/libutilsv0.1-nsslfix.patch"
+    patch -p1 -i "$srcdir/libutilsv0.1-makefile.patch"
+}
+
+build() {
+    cd $srcdir/$pkgname
+    # Override portlibs to help find wiiu-libdynamiclibs
+    make PORTLIBS="$_prefix" DO_LOGGING=0
+
+    # This compiles with -g for some reason
+    $DEVKITPPC/bin/powerpc-eabi-strip -g release/lib/libutils.a
+}
+
+package() {
+    install -d "$pkgdir/$_prefix/lib"
+    install -d "$pkgdir/$_prefix/include"
+
+    cd $srcdir/$pkgname
+    make install PORTLIBS="$pkgdir/$_prefix"
+}

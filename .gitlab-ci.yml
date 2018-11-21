@@ -8,6 +8,7 @@ include:
     - '/packages/pkgconf/ci.yml'
     - '/packages/libiosuhax/ci.yml'
     - '/packages/libdynamiclibs/ci.yml'
+    - '/packages/libutils/ci.yml'
     - '/packages/curl-headers/ci.yml'
     - '/packages/sdl2/ci.yml'
     - '/packages/libmad/ci.yml'
