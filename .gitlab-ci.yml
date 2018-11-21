@@ -49,6 +49,8 @@ pages:
 arch_container:
     stage: container
     image: docker:stable
+    before_script:
+        - echo nothing to do...
     services:
         - docker:dind
     script:
