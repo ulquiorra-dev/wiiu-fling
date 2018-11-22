@@ -12,7 +12,7 @@ license=(MIT)
 options=(!strip libtool staticlibs)
 source=("${url}/releases/download/${_realver}/glm-${_realver}.zip")
 sha256sums=('496e855590b8aa138347429b7fc745d66707303fb82c1545260d1888472e137b')
-makedepends=('devkitpro-pkgbuild-helpers')
+makedepends=('devkitpro-pkgbuild-helpers' 'cmake')
 install="dkp-upcoming.install"
 
 build() {
