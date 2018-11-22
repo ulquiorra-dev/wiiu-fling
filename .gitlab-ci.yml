@@ -11,7 +11,9 @@ include:
     - '/packages/libutils/ci.yml'
     - '/packages/curl-headers/ci.yml'
     - '/packages/sdl2/ci.yml'
+    # devkitPPC transitional packages
     - '/packages/libmad/ci.yml'
+    - '/packages/glm/ci.yml'
 
 stages:
     - container # Docker bits

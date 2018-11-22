@@ -1,0 +1,6 @@
+post_install() {
+    echo "This ppc-glm is provided by wiiu-fling since it hasn't been merged"
+    echo "into devkitPro yet. It has a deliberately wrong pkgver such that you"
+    echo "will automatically update to the devkitPro version upon release."
+    echo "This package will be removed when devkitPro's is available."
+}
