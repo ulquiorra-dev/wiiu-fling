@@ -18,18 +18,16 @@ source=("curl.h"
         "mprintf.h"
         "multi.h"
         "stdcheaders.h"
-        "typecheck-gcc.h"
-        "socket-extras.h")
-md5sums=("46b17ff0e980ce2b8ae1228a33f270bb"
-         "ce273c203cf6e484a91673f1355139d7"
-         "9e7f8b768255827f9bac344297a1d51f"
-         "d2b41ec24cd200fc0cba497486a9fb0a"
-         "0bacb9036436a91bf66c007a56a2f9b9"
-         "aa358cbaa44e19f43cc05ea772d037af"
-         "63dd390e82a97e3115abc2795d9e77ab"
-         "18c029ed6fdad0ce85ac094ca2841515"
-         "8b6fb3f7bce92d5a46903bf96ff693d1"
-         "14e56520989e2f0469038e7f790c8d22")
+        "typecheck-gcc.h")
+sha256sums=("2b32520ed8bbb7ef2687af874d0229f30a67e600fb9cf5fd527c4863a2dbce5e"
+            "9568ad291f2b55a47d8ffc1dc72e09e4bb3e6503f80c94853a87d62a849a0470"
+            "42e6247e82acbe81a4df13551fc948b9271150ec307b1cdad15cad0863f02c3f"
+            "886c19e0e8bee3f7e8ee796a808f3c941bacb0c933a04ac260afa6a6b454a062"
+            "2f335fd2209e1e57ca11dba5e73fdc9d8d0f2b0830c75e263b71c61dc5717f7a"
+            "945d5319ef2ca5cd800703ae9d214391be89ea67c7c133fa945b0f132675951a"
+            "82045414bb73cc0da7a123b127868325a7c2456342a9c92cf7cd19de7ab63564"
+            "970ae8a1a78f3210cda90c6c9548b80e878e181414540bd862c35a47162456d1"
+            "356c08144ffb68995524d160c13bad048458e434d38d7da72afa755be5d7062c")
 
 _prefix="/opt/devkitpro/portlibs/wiiu"
 

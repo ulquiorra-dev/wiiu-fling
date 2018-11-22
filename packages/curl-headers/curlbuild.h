@@ -56,7 +56,7 @@
 #ifdef __WUT__
 #include <nsysnet/socket.h>
 #else
-#include "socket-extras.h"
+//you're on your own
 #endif
 
 /* ================================================================ */
