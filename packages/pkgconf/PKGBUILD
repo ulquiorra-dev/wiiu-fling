@@ -11,7 +11,6 @@ pkgdesc="Finds libraries and catalogues compile flags for Wii U libraries"
 url="https://github.com/pkgconf/pkgconf"
 license=("custom:ISC")
 arch=("x86_64" "i686")
-depends=("devkitPPC")
 makedepends=("git")
 groups=("wiiu-tools-linux")
 source=("$pkgname::git+https://github.com/pkgconf/pkgconf.git#tag=$_gittag")
@@ -42,6 +41,8 @@ build() {
 }
 
 package() {
+    depends=("devkitPPC")
+
     DESTDIR="$pkgdir" make -C build install
 
     install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgname/COPYING
