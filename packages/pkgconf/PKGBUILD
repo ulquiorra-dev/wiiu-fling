@@ -8,13 +8,13 @@ pkgver=1.5.4
 _gittag=pkgconf-1.5.4
 pkgrel=2
 pkgdesc="Finds libraries and catalogues compile flags for Wii U libraries"
-url="https://git.dereferenced.org/pkgconf/pkgconf"
+url="https://github.com/pkgconf/pkgconf"
 license=("custom:ISC")
 arch=("x86_64" "i686")
 depends=("devkitPPC")
 makedepends=("git")
 groups=("wiiu-tools-linux")
-source=("$pkgname::git+https://git.dereferenced.org/pkgconf/pkgconf.git#tag=$_gittag")
+source=("$pkgname::git+https://github.com/pkgconf/pkgconf.git#tag=$_gittag")
 md5sums=("SKIP")
 
 _pcdirs=/opt/devkitpro/portlibs/wiiu/lib/pkgconfig:/opt/devkitpro/portlibs/ppc/lib/pkgconfig
