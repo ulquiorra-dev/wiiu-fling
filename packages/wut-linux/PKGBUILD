@@ -6,7 +6,7 @@ pkgname=wut-linux
 pkgver=1.0.0_beta6
 _gittag=1.0.0-beta6
 pkgrel=1
-pkgdesc="Open-source Wii U Toolchain for creating rpx/rpl"
+pkgdesc="Open-source Wii U Toolchain for creating rpx/rpl (unofficial from-source)"
 # Should work with other archs too, add if you want
 arch=('x86_64' 'i686')
 url="https://github.com/decaf-emu/wut"
@@ -20,8 +20,7 @@ makedepends=('cmake' 'zlib' 'gcc-libs' 'gcc' 'git')
 #depends=('cmake' 'zlib' 'gcc-libs' 'devkitPPC')
 #makedepends=('gcc' 'git')
 
-# Update this when makefile wut gets merged
-provides=('wiiu-wut-cmake' 'wiiu-wut')
+provides=('wiiu-wut-cmake' 'wiiu-wut-make' 'wiiu-wut')
 source=("git+https://github.com/decaf-emu/wut.git#tag=$_gittag")
 md5sums=('SKIP')
 options=("!strip" "staticlibs")

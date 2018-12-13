@@ -3,7 +3,7 @@ build-libutils:
     script:
         - >
             pacman --noconfirm -U
-            packages/wut/*.pkg*
+            packages/wut-linux/*.pkg*
             packages/curl-headers/*.pkg*
             packages/libdynamiclibs/*.pkg*
 

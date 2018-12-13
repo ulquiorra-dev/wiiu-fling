@@ -3,7 +3,7 @@ build-libdynamiclibs:
     script:
 #        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-wut -O wut.zip && unzip wut.zip
 #        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-curl-headers -O curl.zip && unzip curl.zip
-        - pacman --noconfirm -U packages/wut/*.pkg* packages/curl-headers/*.pkg*
+        - pacman --noconfirm -U packages/wut-linux/*.pkg* packages/curl-headers/*.pkg*
         - source /etc/profile.d/*
         - cd $CI_PROJECT_DIR/packages/libdynamiclibs
         - chmod -R 0777 .

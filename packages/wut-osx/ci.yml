@@ -1,8 +1,7 @@
-build-sdl2:
-    stage: libraries
+build-wut-osx:
+    stage: toolchain
     script:
-        - pacman --noconfirm -U packages/wut-linux/*.pkg*
-        - cd $CI_PROJECT_DIR/packages/sdl2
+        - cd $CI_PROJECT_DIR/packages/wut-osx
         - chmod -R 0777 .
 #       Set up a builduser, because makepkg -_-
         - useradd builduser -m
@@ -12,10 +11,10 @@ build-sdl2:
         - sudo -E -u builduser makepkg -s --noconfirm
     artifacts:
         paths:
-            - 'packages/sdl2/*.pkg*'
+            - 'packages/wut-osx/*.pkg*'
 #    only:
 #        changes:
-#            - 'packages/sdl2/PKGBUILD'
-#            - 'packages/sdl2/ci.yml'
+#            - 'packages/wut-osx/PKGBUILD'
+#            - 'packages/wut-osx/ci.yml'
 #        variables:
 #            - $TRY_CACHE == "yes"

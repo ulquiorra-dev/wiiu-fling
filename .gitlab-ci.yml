@@ -4,7 +4,8 @@ variables:
     TRY_CACHE: "no"
 
 include:
-    - '/packages/wut/ci.yml'
+    - '/packages/wut-linux/ci.yml'
+    - '/packages/wut-osx/ci.yml'
     - '/packages/pkgconf/ci.yml'
     - '/packages/libiosuhax/ci.yml'
     - '/packages/libdynamiclibs/ci.yml'

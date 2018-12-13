@@ -1,7 +1,7 @@
-build-wut:
+build-wut-linux:
     stage: toolchain
     script:
-        - cd $CI_PROJECT_DIR/packages/wut
+        - cd $CI_PROJECT_DIR/packages/wut-linux
         - chmod -R 0777 .
 #       Set up a builduser, because makepkg -_-
         - useradd builduser -m
@@ -11,10 +11,10 @@ build-wut:
         - sudo -E -u builduser makepkg -s --noconfirm
     artifacts:
         paths:
-            - 'packages/wut/*.pkg*'
+            - 'packages/wut-linux/*.pkg*'
 #    only:
 #        changes:
-#            - 'packages/wut/PKGBUILD'
-#            - 'packages/wut/ci.yml'
+#            - 'packages/wut-linux/PKGBUILD'
+#            - 'packages/wut-linux/ci.yml'
 #        variables:
 #            - $TRY_CACHE == "yes"
