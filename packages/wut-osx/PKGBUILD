@@ -13,7 +13,8 @@ url="https://github.com/decaf-emu/wut"
 license=('GPL2')
 groups=('wiiu-tools-osx')
 
-depends=('devkitPPC')
+#defined in package
+#depends=('devkitPPC')
 makedepends=('p7zip' 'wget')
 
 provides=('wiiu-wut-cmake' 'wiiu-wut-make' 'wiiu-wut')
@@ -23,6 +24,7 @@ sha256sums=('5227ca4e2ca995546135fee5c1d10ecd3deb113698279bd9e1880b3b0b039b07')
 options=("!strip" "staticlibs")
 
 package() {
+    depends=('devkitPPC')
     mkdir -p $pkgdir/$_destdir
     7z x -o$pkgdir/$_destdir wut.macos.7z
 }
