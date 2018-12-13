@@ -1,0 +1,7 @@
+.kdev4/
+*.kdev4
+
+# makepkg stuff
+pkg/
+src/
+*.pkg*
