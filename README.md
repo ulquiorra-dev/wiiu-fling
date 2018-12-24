@@ -55,6 +55,7 @@ Now, open your pacman configuration file:
  `/etc/pacman.conf`
  - On systems where `dkp-pacman` installs devkitPro packages, this is
  `/opt/devkitpro/pacman/etc/pacman.conf`
+
 For example, the command `nano /etc/pacman.conf` would use `nano` to edit the
 pacman configuration on a native-pacman system, while
 `vim /opt/devkitpro/pacman/etc/pacman.conf` would use `vim` to do the same on a
@@ -108,3 +109,13 @@ spoofed version number such that devkitPro's version will overwrite any
 transitional packages on release. You'll get a warning when one of these are
 installed. These are purely intended as stopgaps until devkitPro upstreams an
 equivalent package.
+
+## License and Contact
+Everything that I've written here (CI scripts, PKGBUILDs, etc.) is public
+domain as writen in [LICENSE.md](LICENSE.md). I may need to sublicense in other
+places (e.g. devkitPro upstreams), but generally just do whatever. I appreciate,
+but don't require, credit when appropriate.
+
+You can find me at all the places listed on my
+[website](https://heyquark.com/aboutme) - feel free to reach out with comments,
+questions, conversation, memes, whatever.
