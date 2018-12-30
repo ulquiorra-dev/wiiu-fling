@@ -13,6 +13,7 @@ include:
     - '/packages/libutils/ci.yml'
     - '/packages/curl-headers/ci.yml'
     - '/packages/sdl2/ci.yml'
+    - '/packages/libromfs/ci.yml'
     # devkitPPC transitional packages
     - '/packages/libmad/ci.yml'
     - '/packages/glm/ci.yml'
