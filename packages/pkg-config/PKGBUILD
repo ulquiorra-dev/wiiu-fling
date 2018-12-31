@@ -1,0 +1,32 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+pkgname=wiiu-pkg-config
+pkgver=1.0
+pkgrel=1
+pkgdesc="Finds libraries and catalogues compile flags for Wii U libraries (native wrapper)"
+url="https://github.com/pkgconf/pkgconf"
+arch=("any")
+groups=("wiiu-tools-linux" "wiiu-tools-osx")
+source=("pkg-config.in")
+md5sums=("SKIP")
+
+provides=("wiiu-pkgconf")
+# backwards-compatibility oopsies
+replaces=("wiiu-pkgconf-linux")
+
+_prefix=/opt/devkitpro/portlibs/wiiu
+
+_pcdirs=/opt/devkitpro/portlibs/wiiu/lib/pkgconfig:/opt/devkitpro/portlibs/ppc/lib/pkgconfig
+_libdirs=/opt/devkitpro/devkitPPC/powerpc-eabi/lib
+_includedirs=/opt/devkitpro/devkitPPC/powerpc-eabi/include
+
+prepare() {
+    cp pkg-config.in pkg-config
+    sed -i "s#%LIBDIR%#\"$_pcdirs\"#" pkg-config
+    sed -i "s#%SYSINC%#\"$_includedirs\"#" pkg-config
+    sed -i "s#%SYSLIB%#\"$_libdirs\"#" pkg-config
+}
+
+package() {
+    install -Dm755 "$srcdir/pkg-config" "$pkgdir/$_prefix/bin/wiiu-pkg-config"
+}

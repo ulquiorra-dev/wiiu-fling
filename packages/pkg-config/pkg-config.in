@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# borrowed from devkitPro's repo, I appreciate it!
+# https://github.com/devkitPro/pacman-packages/blob/master/ppc/pkg-config/pkg-config.in
+
+# reset pkg-config variables to ensure we're not polluted by host libraries
+
+export PKG_CONFIG_DIR=
+export PKG_CONFIG_PATH=
+export PKG_CONFIG_SYSROOT_DIR=
+
+export PKG_CONFIG_LIBDIR=%LIBDIR%
+export PKG_CONFIG_SYSTEM_INCLUDE_PATH=%SYSINC%
+export PKG_CONFIG_SYSTEM_LIBRARY_PATH=%SYSLIB%
+
+exec pkg-config --static "$@"
