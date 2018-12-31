@@ -5,7 +5,7 @@ build-glm:
             pacman --noconfirm -U
             packages/wut-linux/*.pkg*
             packages/curl-headers/*.pkg*
-            packages/pkgconf/*.pkg*
+            packages/pkg-config/*.pkg*
 
         - source /etc/profile.d/*
         - cd $CI_PROJECT_DIR/packages/glm
