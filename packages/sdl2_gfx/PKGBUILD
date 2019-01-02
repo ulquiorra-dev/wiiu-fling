@@ -1,0 +1,39 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+pkgname=wiiu-sdl2_gfx
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="SDL2 library for various additional graphics routines"
+url="https://sourceforge.net/projects/sdl2gfx"
+license=("custom")
+arch=("any")
+depends=("devkitPPC" "ppc-freetype" "wiiu-sdl2")
+makedepends=("git" "wiiu-pkg-config")
+groups=("wiiu-libs")
+source=("https://sourceforge.net/projects/sdl2gfx/files/SDL2_gfx-$pkgver.tar.gz")
+sha256sums=("63e0e01addedc9df2f85b93a248f06e8a04affa014a835c2ea34bfe34e576262")
+options=("!buildflags" "!strip" "staticlibs")
+
+_prefix="/opt/devkitpro/portlibs/wiiu"
+
+prepare() {
+    cd SDL2_gfx-$pkgver
+    export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitPPC/bin:$PATH
+    export PATH=/opt/devkitpro/portlibs/ppc/bin:$PATH
+    export PATH=$_prefix/bin:$PATH
+    PKG_CONFIG=wiiu-pkg-config ./configure \
+        --prefix=$_prefix \
+        --host=powerpc-eabi \
+        --with-sdl-prefix=$_prefix \
+        --disable-shared --disable-mmx
+}
+
+build() {
+    cd SDL2_gfx-$pkgver
+    make
+}
+
+package() {
+    cd SDL2_gfx-$pkgver
+    make install DESTDIR=$pkgdir
+}

@@ -1,0 +1,43 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+pkgname=wiiu-sdl2_ttf
+pkgver=2.0.14
+pkgrel=1
+pkgdesc="Library to add TTF font rendering to SDL2"
+url="https://www.libsdl.org/projects/SDL_ttf"
+license=("custom")
+arch=("any")
+depends=("devkitPPC" "ppc-freetype" "wiiu-sdl2")
+makedepends=("git" "wiiu-pkg-config")
+groups=("wiiu-libs")
+source=("https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-$pkgver.tar.gz")
+sha256sums=("34db5e20bcf64e7071fe9ae25acaa7d72bdc4f11ab3ce59acc768ab62fe39276")
+options=("!buildflags" "!strip" "staticlibs")
+
+_prefix="/opt/devkitpro/portlibs/wiiu"
+
+prepare() {
+    cd SDL2_ttf-$pkgver
+    export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitPPC/bin:$PATH
+    export PATH=/opt/devkitpro/portlibs/ppc/bin:$PATH
+    export PATH=$_prefix/bin:$PATH
+    PKG_CONFIG=wiiu-pkg-config ./configure \
+        --prefix=$_prefix \
+        --host=powerpc-eabi \
+        --with-freetype-prefix=/opt/devkitpro/portlibs/ppc/ \
+        --with-sdl-prefix=$_prefix \
+        --without-x --disable-sdltest --disable-shared
+}
+
+build() {
+    # Automake really, really, really wants to build "showfont". This doesn't work.
+    # The best way around this I could find is to let the install targets in package()
+    # do the actual compilation.
+    echo
+}
+
+package() {
+    cd SDL2_ttf-$pkgver
+    # These are the best targets I could find to avoid building showfont
+    make install-exec install-data DESTDIR=$pkgdir
+}

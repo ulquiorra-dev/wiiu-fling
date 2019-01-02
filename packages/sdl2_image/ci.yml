@@ -1,0 +1,27 @@
+build-sdl2-image:
+    stage: libraries2
+    script:
+        - >
+            pacman --noconfirm -U
+            packages/wut-linux/*.pkg*
+            packages/sdl2/*.pkg*
+            packages/pkg-config/*.pkg*
+
+        - source /etc/profile.d/*
+        - cd $CI_PROJECT_DIR/packages/sdl2_image
+        - chmod -R 0777 .
+#       Set up a builduser, because makepkg -_-
+        - useradd builduser -m
+        - passwd -d builduser
+        - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
+#       Build!
+        - sudo -E -u builduser makepkg -s --noconfirm
+    artifacts:
+        paths:
+            - 'packages/sdl2_image/*.pkg*'
+#    only:
+#        changes:
+#            - 'packages/sdl2_image/PKGBUILD'
+#            - 'packages/sdl2_image/ci.yml'
+#        variables:
+#            - $TRY_CACHE == "yes"

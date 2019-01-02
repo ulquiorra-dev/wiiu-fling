@@ -1,0 +1,39 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+pkgname=wiiu-sdl2_image
+pkgver=2.0.4
+pkgrel=1
+pkgdesc="Library to add various image formats to SDL2"
+url="https://www.libsdl.org/projects/SDL_image"
+license=("custom")
+arch=("any")
+depends=("devkitPPC" "ppc-libpng" "wiiu-sdl2")
+makedepends=("git" "wiiu-pkg-config")
+groups=("wiiu-libs")
+source=("https://www.libsdl.org/projects/SDL_image/release/SDL2_image-$pkgver.tar.gz")
+sha256sums=("e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac")
+options=("!buildflags" "!strip" "staticlibs")
+
+_prefix="/opt/devkitpro/portlibs/wiiu"
+
+prepare() {
+    cd SDL2_image-$pkgver
+    export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitPPC/bin:$PATH
+    export PATH=/opt/devkitpro/portlibs/ppc/bin:$PATH
+    export PATH=$_prefix/bin:$PATH
+    PKG_CONFIG=wiiu-pkg-config ./configure \
+        --prefix=$_prefix \
+        --host=powerpc-eabi \
+        --with-sdl-prefix=$_prefix \
+        --disable-shared
+}
+
+build() {
+    echo
+}
+
+package() {
+    cd SDL2_image-$pkgver
+    # These are the best targets I could find to avoid building showfont
+    make install-exec install-data DESTDIR=$pkgdir
+}

@@ -1,0 +1,5 @@
+post_install() {
+    echo "This sdl2 package used to include sdl2_ttf, sdl2_gfx and sdl_image."
+    echo "These are now in their own packages. Use '(dkp-)pacman -Ss wiiu-sdl2'"
+    echo "to see what's available."
+}

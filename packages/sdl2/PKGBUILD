@@ -1,48 +1,38 @@
 # Maintainer: Ash Logan <ash [at] heyquark [dot] com>
 
 pkgname=wiiu-sdl2
-pkgver=0.1
-_gittag=e275292
+pkgver=2.0.8
+_gittag=817cf20
 pkgrel=1
 pkgdesc="Library for portable access to Wii U video, audio, input"
-url="https://github.com/rw-r-r-0644/sdl2-wiiu"
+url="https://github.com/yawut/SDL"
 license=("custom")
-arch=("x86_64" "i686")
+arch=("any")
 depends=("devkitPPC" "ppc-libjpeg-turbo" "ppc-mpg123" "ppc-libogg" "ppc-libvorbisidec" "ppc-libpng" "ppc-freetype")
-makedepends=("git")
+makedepends=("git" "cmake" "wiiu-wut-cmake")
 groups=("wiiu-libs")
-source=("$pkgname::git+https://github.com/rw-r-r-0644/sdl2-wiiu#tag=$_gittag")
+source=("$pkgname::git+https://github.com/yawut/SDL#tag=$_gittag")
 md5sums=("SKIP")
 options=("!buildflags" "!strip" "staticlibs")
+install=sdl2-legacy.install
 
 _prefix="/opt/devkitpro/portlibs/wiiu"
 
 prepare() {
-    echo nothing to do
+    cd $pkgname
+    mkdir -p build
+    cd build
+    cmake .. \
+        -DCMAKE_TOOLCHAIN_FILE=$WUT_ROOT/share/wut.toolchain.cmake \
+        -DCMAKE_INSTALL_PREFIX=$_prefix
 }
 
 build() {
-    cd $pkgname/SDL2-wiiu
-    make -f Makefile.wiiu
-    cd ../SDL2_gfx-1.0.4-wiiu
-    make -f Makefile.wiiu
-    cd ../SDL2_image-2.0.3-wiiu
-    make -f Makefile.wiiu
-    cd ../SDL2_ttf-2.0.14-wiiu
-    make -f Makefile.wiiu
-    cd ../SDL2_mixer-2.0.2-wiiu
-    make -f Makefile.wiiu
+    cd $pkgname/build
+    make
 }
 
 package() {
-    cd $pkgname/SDL2-wiiu
-    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
-    cd ../SDL2_gfx-1.0.4-wiiu
-    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
-    cd ../SDL2_image-2.0.3-wiiu
-    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
-    cd ../SDL2_ttf-2.0.14-wiiu
-    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
-    cd ../SDL2_mixer-2.0.2-wiiu
-    make -f Makefile.wiiu install PORTLIBS=$pkgdir/$_prefix
+    cd $pkgname/build
+    make install DESTDIR=$pkgdir
 }

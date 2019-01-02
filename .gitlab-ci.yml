@@ -13,6 +13,9 @@ include:
     - '/packages/libutils/ci.yml'
     - '/packages/curl-headers/ci.yml'
     - '/packages/sdl2/ci.yml'
+    - '/packages/sdl2_gfx/ci.yml'
+    - '/packages/sdl2_image/ci.yml'
+    - '/packages/sdl2_ttf/ci.yml'
     - '/packages/libromfs/ci.yml'
     # devkitPPC transitional packages
     - '/packages/libmad/ci.yml'
