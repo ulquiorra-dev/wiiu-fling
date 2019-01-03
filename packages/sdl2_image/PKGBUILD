@@ -14,7 +14,7 @@ source=("https://www.libsdl.org/projects/SDL_image/release/SDL2_image-$pkgver.ta
 sha256sums=("e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac")
 options=("!buildflags" "!strip" "staticlibs")
 
-_prefix="/opt/devkitpro/portlibs/wiiu-dev"
+_prefix="/opt/devkitpro/portlibs/wiiu"
 
 prepare() {
     cd SDL2_image-$pkgver
