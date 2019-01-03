@@ -2,7 +2,7 @@
 
 pkgname=wiiu-sdl2_mixer
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SDL2 multi-channel audio mixer library"
 url="https://www.libsdl.org/projects/SDL_mixer"
 license=("custom")
@@ -40,7 +40,7 @@ build() {
         --prefix=$_prefix \
         --host=powerpc-eabi \
         --with-sdl-prefix=$_prefix \
-        --disable-shared
+        --disable-shared --disable-music-cmd
     # Hackery to avoid building "playwave" example program
     make build build/libSDL2_mixer.la
 }
