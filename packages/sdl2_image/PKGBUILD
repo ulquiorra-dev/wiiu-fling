@@ -26,7 +26,7 @@ prepare() {
     export CPPFLAGS=$(wiiu-pkg-config --cflags-only-I libjpeg)
     export LDFLAGS=$(wiiu-pkg-config --libs-only-L libjpeg)
 
-    export CPPFLAGS=-D__WIIU__ $CPPFLAGS
+    export CPPFLAGS="-D__WIIU__ $CPPFLAGS"
 
     PKG_CONFIG=wiiu-pkg-config ./configure \
         --prefix=$_prefix \
