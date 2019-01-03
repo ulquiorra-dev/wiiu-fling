@@ -2,7 +2,7 @@
 
 pkgname=wiiu-sdl2_image
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Library to add various image formats to SDL2"
 url="https://www.libsdl.org/projects/SDL_image"
 license=("custom")
