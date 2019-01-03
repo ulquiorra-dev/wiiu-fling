@@ -2,8 +2,8 @@
 
 pkgname=wiiu-sdl2
 pkgver=2.0.8
-_gittag=9c7c9d7
-pkgrel=2
+_gittag=49a2e20
+pkgrel=3
 pkgdesc="Library for portable access to Wii U video, audio, input"
 url="https://github.com/yawut/SDL"
 license=("custom")
