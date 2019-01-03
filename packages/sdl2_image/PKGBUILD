@@ -14,7 +14,7 @@ source=("https://www.libsdl.org/projects/SDL_image/release/SDL2_image-$pkgver.ta
 sha256sums=("e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac")
 options=("!buildflags" "!strip" "staticlibs")
 
-_prefix="/opt/devkitpro/portlibs/wiiu"
+_prefix="/opt/devkitpro/portlibs/wiiu-dev"
 
 prepare() {
     cd SDL2_image-$pkgver
@@ -25,6 +25,8 @@ prepare() {
     # The configure script doesn't check pkg-config for libjpeg, so let's do that
     export CPPFLAGS=$(wiiu-pkg-config --cflags-only-I libjpeg)
     export LDFLAGS=$(wiiu-pkg-config --libs-only-L libjpeg)
+
+    export CPPFLAGS=-D__WIIU__ $CPPFLAGS
 
     PKG_CONFIG=wiiu-pkg-config ./configure \
         --prefix=$_prefix \
