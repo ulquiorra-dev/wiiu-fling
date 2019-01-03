@@ -1,0 +1,36 @@
+--- package.orig/configure.in        2019-01-03 18:16:16.891987708 +1100
++++ package.new/configure.in         2019-01-03 18:23:43.134082321 +1100
+@@ -609,8 +609,15 @@
+ AC_HELP_STRING([--enable-music-mp3-mpg123-shared], [dynamically load libmpg123 library [[default=yes]]]),
+               [], [enable_music_mp3_mpg123_shared=yes])
+ if test x$enable_music_mp3_mpg123 = xyes; then
+-    AC_CHECK_HEADER([mpg123.h], [have_mpg123_hdr=yes])
+-    AC_CHECK_LIB([mpg123], [mpg123_replace_reader_handle], [have_mpg123_lib=yes])
++    LIBS_SAVED="$LIBS"
++    PKG_CHECK_MODULES([MPG123], [libmpg123], [dnl
++            have_mpg123_hdr=yes
++            have_mpg123_lib=yes
++        ], [dnl
++            AC_CHECK_HEADER([mpg123.h], [have_mpg123_hdr=yes])
++            AC_CHECK_LIB([mpg123], [mpg123_replace_reader_handle], [have_mpg123_lib=yes;MPG123_LIBS="-lmpg123"])
++        ])
++    LIBS="$LIBS_SAVED"
+     if test x$have_mpg123_hdr = xyes -a x$have_mpg123_lib = xyes; then
+         have_libmpg123=yes
+         case "$host" in
+@@ -624,12 +631,12 @@
+                 mpg123_lib=[`find_lib "libmpg123.so.*"`]
+                 ;;
+         esac
+-        EXTRA_CFLAGS="$EXTRA_CFLAGS -DMUSIC_MP3_MPG123"
++        EXTRA_CFLAGS="$EXTRA_CFLAGS -DMUSIC_MP3_MPG123 $MPG123_CFLAGS"
+         if test x$enable_music_mp3_mpg123_shared = xyes && test x$mpg123_lib != x; then
+             echo "-- dynamic libmpg123 -> $mpg123_lib"
+             EXTRA_CFLAGS="$EXTRA_CFLAGS -DMPG123_DYNAMIC=\\\"$mpg123_lib\\\""
+         else
+-            EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lmpg123"
++            EXTRA_LDFLAGS="$EXTRA_LDFLAGS $MPG123_LIBS"
+         fi
+     else
+         AC_MSG_WARN([*** Unable to find mpg123 library (https://www.mpg123.de)])
+
