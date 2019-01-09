@@ -100,7 +100,7 @@ a wut CMakeLists.txt file, and I'll add it here.
 We also ship `wiiu-pkg-config`, which wraps the system pkg-config to work with
 the packages in `$DEVKITPRO/portlibs/wiiu` and `$DEVKITPRO/portlibs/ppc`. When
 used in your build system, `wiiu-pkg-config` can manage the compiler and linker
-flags for your libraries. Would appreciate if someone could try this on OSX.
+flags for your libraries.
 
 Fling isn't purely for Wii U-specific libraries: one of the goals here is to
 compile all Wii U homebrew purely with packages from the devkitPro or Fling
