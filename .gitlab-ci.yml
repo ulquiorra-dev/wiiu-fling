@@ -7,6 +7,7 @@ include:
     - '/packages/wut-linux/ci.yml'
     - '/packages/wut-linux-bin/ci.yml'
     - '/packages/wut-osx/ci.yml'
+    - '/packages/wut-msys2/ci.yml'
     - '/packages/pkg-config/ci.yml'
     - '/packages/libiosuhax/ci.yml'
     - '/packages/libdynamiclibs/ci.yml'
