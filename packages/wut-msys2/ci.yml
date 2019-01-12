@@ -1,0 +1,15 @@
+build-wut-msys2:
+    stage: toolchain
+    before_script:
+        - echo prebuilt!
+    script:
+        - echo prebuilt!
+    artifacts:
+        paths:
+            - 'packages/wut-msys2/*.pkg*'
+#    only:
+#        changes:
+#            - 'packages/wut-msys2/PKGBUILD'
+#            - 'packages/wut-msys2/ci.yml'
+#        variables:
+#            - $TRY_CACHE == "yes"

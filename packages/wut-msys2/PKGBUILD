@@ -1,0 +1,46 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+# ONLY RUN THIS UNDER MSYS2 ON WINDOWS
+
+_destdir=/opt/wut
+
+pkgname=wut-msys2
+pkgver=1.0.0_beta7
+_gittag=1.0.0-beta7
+pkgrel=1
+pkgdesc="Open-source Wii U Toolchain for creating rpx/rpl (official linux64 binaries)"
+arch=('any')
+url="https://github.com/decaf-emu/wut"
+license=('GPL2')
+#groups=('wiiu-tools-msys2')
+
+#defined in package
+depends=('devkitPPC' 'cmake')
+makedepends=('git')
+
+provides=('wiiu-wut-cmake' 'wiiu-wut-make' 'wiiu-wut')
+source=("git+https://github.com/decaf-emu/wut.git#tag=$_gittag")
+md5sums=("SKIP")
+options=("!strip" "staticlibs")
+
+prepare() {
+	cd wut
+    git submodule update --init
+}
+
+build() {
+    cd wut
+
+	export PATH=$DEVKITPRO/tools/bin:$DEVKITPPC/bin:$PATH
+
+    mkdir -p build && cd build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/$_destdir" ..
+    make
+}
+
+package() {
+    cd wut/build
+
+    make install
+    mkdir -p "$pkgdir/etc/profile.d"
+    echo "export WUT_ROOT=$_destdir" > "$pkgdir/etc/profile.d/wiiu-wut.sh"
+}
