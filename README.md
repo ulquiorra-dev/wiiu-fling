@@ -33,7 +33,7 @@ few config files. Make sure you have devkitPro installed and working before
 trying this.
 
 When I write `(dkp)-pacman` below, subsitute `dkp-pacman` or `pacman` as
-appropriate, depending on how devkitPro packages are isntalled on your system.
+appropriate, depending on how devkitPro packages are installed on your system.
 
 First, install the Fling signing key:
 ```shell
@@ -86,19 +86,21 @@ all Wii U-only libraries (libiosuhax, sdl2, etc.) are installed to
 `/opt/devkitpro/portlibs/ppc`. You'll have to add this path to your Makefile or
 CMakeLists.txt in order to link with wiiu-fling's libraries.
 
-On Linux platforms, we ship `wiiu-pkgconf-linux`, which for compatible packages
-handles the different paths and compiler flags for you. I'd recommend using this
-where possible. OSX support is in the works.
-
 For example, vgmoose was able to adapt their app, hb-appstore, to work with
 Fling in
 [this commit](https://github.com/vgmoose/hb-appstore/commit/520efb9d7065e72e55f83cd575f0f9de0c54c06e).
 If you do the same, please link to this page rather than writing instructions to
-install the wiiu-fling repository. However, including a list of packages to
-install is a great idea!
+install the wiiu-fling repository (
+[vgmoose has since done this!](https://github.com/vgmoose/hb-appstore/commit/e16f6fec893b284403e8758acb7edb47b5db1b6b))
+That said, including a list of packages to install is a great idea!
 
 Let me know if one of your projects ends up with a simple commit to add fling to
 a wut CMakeLists.txt file, and I'll add it here.
+
+We also ship `wiiu-pkg-config`, which wraps the system pkg-config to work with
+the packages in `$DEVKITPRO/portlibs/wiiu` and `$DEVKITPRO/portlibs/ppc`. When
+used in your build system, `wiiu-pkg-config` can manage the compiler and linker
+flags for your libraries.
 
 Fling isn't purely for Wii U-specific libraries: one of the goals here is to
 compile all Wii U homebrew purely with packages from the devkitPro or Fling
