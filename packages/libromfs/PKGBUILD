@@ -16,7 +16,7 @@ options=("staticlibs" "!strip")
 source=("$pkgname::git+https://github.com/yawut/libromfs-wiiu#tag=$_gittag")
 md5sums=("SKIP")
 
-makedepends=('git' 'wut')
+makedepends=('git' 'wut' 'cmake')
 
 build() {
     cd $pkgname
