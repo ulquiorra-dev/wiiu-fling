@@ -1,4 +1,4 @@
-FROM base/archlinux:latest
+FROM archlinux/base:latest
 COPY dkp /dkp
 
 RUN cd /dkp && chmod +x install-dkp.sh && ./install-dkp.sh && \
