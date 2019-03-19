@@ -19,3 +19,6 @@ pacman --noconfirm -U https://downloads.devkitpro.org/devkitpro-keyring-r1.787e0
 pacman --noconfirm -Sy
 
 pacman --noconfirm --needed -S devkit-env
+
+# Hotfix until devkitPro adds this
+echo "export WUT_ROOT=/opt/devkitpro/wut" > /etc/profile.d/wut-env

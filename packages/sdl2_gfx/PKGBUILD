@@ -2,7 +2,7 @@
 
 pkgname=wiiu-sdl2_gfx
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SDL2 library for various additional graphics routines"
 url="https://sourceforge.net/projects/sdl2gfx"
 license=("custom")
@@ -21,7 +21,9 @@ prepare() {
     export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitPPC/bin:$PATH
     export PATH=/opt/devkitpro/portlibs/ppc/bin:$PATH
     export PATH=$_prefix/bin:$PATH
-    PKG_CONFIG=wiiu-pkg-config ./configure \
+    export PKG_CONFIG=/opt/devkitpro/portlibs/wiiu/bin/powerpc-eabi-pkg-config
+
+    ./configure \
         --prefix=$_prefix \
         --host=powerpc-eabi \
         --with-sdl-prefix=$_prefix \

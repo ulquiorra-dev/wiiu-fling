@@ -2,7 +2,7 @@
 
 pkgname=wiiu-sdl2_ttf
 pkgver=2.0.14
-pkgrel=1
+pkgrel=4
 pkgdesc="Library to add TTF font rendering to SDL2"
 url="https://www.libsdl.org/projects/SDL_ttf"
 license=("custom")
@@ -21,7 +21,8 @@ prepare() {
     export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitPPC/bin:$PATH
     export PATH=/opt/devkitpro/portlibs/ppc/bin:$PATH
     export PATH=$_prefix/bin:$PATH
-    PKG_CONFIG=wiiu-pkg-config ./configure \
+    export PKG_CONFIG=/opt/devkitpro/portlibs/wiiu/bin/powerpc-eabi-pkg-config
+    ./configure \
         --prefix=$_prefix \
         --host=powerpc-eabi \
         --with-freetype-prefix=/opt/devkitpro/portlibs/ppc/ \

@@ -1,0 +1,30 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+_destdir=/opt/wut
+
+pkgname=wut-osx
+pkgver=1.0.0_beta6
+_gittag=1.0.0-beta6
+pkgrel=1
+pkgdesc="Open-source Wii U Toolchain for creating rpx/rpl (official OSX binaries)"
+# Should work with other archs too, add if you want
+arch=('x86_64' 'i686')
+url="https://github.com/decaf-emu/wut"
+license=('GPL2')
+groups=('wiiu-tools-osx')
+
+#defined in package
+#depends=('devkitPPC')
+makedepends=('p7zip' 'wget')
+
+provides=('wiiu-wut-cmake' 'wiiu-wut-make' 'wiiu-wut')
+source=("https://github.com/decaf-emu/wut/releases/download/$_gittag/wut.macos.7z")
+noextract=('wut.macos.7z')
+sha256sums=('5227ca4e2ca995546135fee5c1d10ecd3deb113698279bd9e1880b3b0b039b07')
+options=("!strip" "staticlibs")
+
+package() {
+    depends=('devkitPPC')
+    mkdir -p $pkgdir/$_destdir
+    7z x -o$pkgdir/$_destdir wut.macos.7z
+}

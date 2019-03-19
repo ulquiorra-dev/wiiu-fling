@@ -1,0 +1,9 @@
+post_install() {
+    echo "You've just installed/updated fling's wut-osx; however these days"
+    echo "wut is a devkitPro thing, and is now in the devkitPro repositories."
+    echo "This package pulls in devkitPro's wut as a dependency, but you should"
+    echo "still run the following as soon as possible:"
+    echo "    (dkp-)pacman -Rsn wut-osx"
+    echo "    (dkp-)pacman -S wut"
+    echo "Thanks for using wiiu-fling!"
+}

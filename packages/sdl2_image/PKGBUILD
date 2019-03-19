@@ -2,7 +2,7 @@
 
 pkgname=wiiu-sdl2_image
 pkgver=2.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Library to add various image formats to SDL2"
 url="https://www.libsdl.org/projects/SDL_image"
 license=("custom")
@@ -21,14 +21,15 @@ prepare() {
     export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitPPC/bin:$PATH
     export PATH=/opt/devkitpro/portlibs/ppc/bin:$PATH
     export PATH=$_prefix/bin:$PATH
+    export PKG_CONFIG=/opt/devkitpro/portlibs/wiiu/bin/powerpc-eabi-pkg-config
 
     # The configure script doesn't check pkg-config for libjpeg, so let's do that
-    export CPPFLAGS=$(wiiu-pkg-config --cflags-only-I libjpeg)
-    export LDFLAGS=$(wiiu-pkg-config --libs-only-L libjpeg)
+    export CPPFLAGS=$($PKG_CONFIG --cflags-only-I libjpeg)
+    export LDFLAGS=$($PKG_CONFIG --libs-only-L libjpeg)
 
     export CPPFLAGS="-D__WIIU__ $CPPFLAGS"
 
-    PKG_CONFIG=wiiu-pkg-config ./configure \
+    ./configure \
         --prefix=$_prefix \
         --host=powerpc-eabi \
         --with-sdl-prefix=$_prefix \

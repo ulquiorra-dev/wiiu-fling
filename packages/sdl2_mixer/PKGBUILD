@@ -2,7 +2,7 @@
 
 pkgname=wiiu-sdl2_mixer
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="SDL2 multi-channel audio mixer library"
 url="https://www.libsdl.org/projects/SDL_mixer"
 license=("custom")
@@ -29,14 +29,15 @@ build() {
     export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitPPC/bin:$PATH
     export PATH=/opt/devkitpro/portlibs/ppc/bin:$PATH
     export PATH=$_prefix/bin:$PATH
+    export PKG_CONFIG=/opt/devkitpro/portlibs/wiiu/bin/powerpc-eabi-pkg-config
 
     ./autogen.sh
 
     # The configure script doesn't check pkg-config for mpg123, so let's do that
-    export CPPFLAGS=$(wiiu-pkg-config --cflags-only-I libmpg123)
-    export LDFLAGS=$(wiiu-pkg-config --libs-only-L libmpg123)
+    export CPPFLAGS=$($PKG_CONFIG --cflags-only-I libmpg123)
+    export LDFLAGS=$($PKG_CONFIG --libs-only-L libmpg123)
 
-    PKG_CONFIG=wiiu-pkg-config ./configure \
+    ./configure \
         --prefix=$_prefix \
         --host=powerpc-eabi \
         --with-sdl-prefix=$_prefix \

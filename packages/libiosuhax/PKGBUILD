@@ -3,14 +3,15 @@
 pkgname=wiiu-libiosuhax
 pkgver=0.3
 _gittag=v0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="PowerPC library to access iosuhax and a devoptab for any device/path"
 url="https://github.com/dimok789/libiosuhax"
 license=("custom")
 arch=("x86_64" "i686")
-depends=("devkitPPC")
+depends=("devkitPPC" "wut")
 makedepends=("git")
 groups=("wiiu-libs")
+options=("!buildflags" "!strip" "staticlibs")
 source=("$pkgname::git+https://github.com/dimok789/libiosuhax#tag=$_gittag"
         "iosuhaxv0.3-custinstallloc.patch")
 md5sums=("SKIP"

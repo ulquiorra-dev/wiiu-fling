@@ -2,7 +2,7 @@ build-libiosuhax:
     stage: libraries
     script:
 #        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-wut -O wut.zip && unzip wut.zip
-        - pacman --noconfirm -U packages/wut-linux/*.pkg*
+#        - pacman --noconfirm -U packages/wut-linux/*.pkg*
         - cd $CI_PROJECT_DIR/packages/libiosuhax
         - chmod -R 0777 .
 #       Set up a builduser, because makepkg -_-

@@ -3,9 +3,7 @@ build-sdl2-ttf:
     script:
         - >
             pacman --noconfirm -U
-            packages/wut-linux/*.pkg*
             packages/sdl2/*.pkg*
-            packages/pkg-config/*.pkg*
 
         - source /etc/profile.d/*
         - cd $CI_PROJECT_DIR/packages/sdl2_ttf

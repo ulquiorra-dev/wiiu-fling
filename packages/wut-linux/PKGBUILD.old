@@ -1,0 +1,43 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+_destdir=/opt/wut
+
+pkgname=wut-linux
+pkgver=1.0.0_beta6
+_gittag=1.0.0-beta6
+pkgrel=1
+pkgdesc="Open-source Wii U Toolchain for creating rpx/rpl (unofficial from-source)"
+# Should work with other archs too, add if you want
+arch=('x86_64' 'i686')
+url="https://github.com/decaf-emu/wut"
+license=('GPL2')
+groups=('wiiu-tools-linux')
+
+# These depend lines are for dkp-pacman, use the others for the AUR or w/e
+depends=('devkitPPC')
+makedepends=('cmake' 'zlib' 'gcc-libs' 'gcc' 'git')
+# devkitPPC must come from dkp-pacman
+#depends=('cmake' 'zlib' 'gcc-libs' 'devkitPPC')
+#makedepends=('gcc' 'git')
+
+provides=('wiiu-wut-cmake' 'wiiu-wut-make' 'wiiu-wut')
+source=("git+https://github.com/decaf-emu/wut.git#tag=$_gittag")
+md5sums=('SKIP')
+options=("!strip" "staticlibs")
+
+build() {
+    cd wut
+    git submodule update --init
+
+    mkdir -p build && cd build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/$_destdir" ..
+    make
+}
+
+package() {
+    cd wut/build
+
+    make install
+    mkdir -p "$pkgdir/etc/profile.d"
+    echo "export WUT_ROOT=$_destdir" > "$pkgdir/etc/profile.d/wiiu-wut.sh"
+}
