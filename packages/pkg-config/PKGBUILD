@@ -3,6 +3,6 @@
 pkgname=wiiu-pkg-config
 pkgver=0.1
 pkgrel=2
-pkgdesc="Dead package, please use dkp-<os>/wiiu-pkg-config!"
+pkgdesc="Dead package, please use dkp-libs/wiiu-pkg-config!"
 url="https://github.com/pkgconf/pkgconf"
 arch=("any")
