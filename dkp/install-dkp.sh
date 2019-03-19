@@ -1,6 +1,7 @@
 #!/bin/sh
 #This must be run as root
 
+pacman-key --init
 pacman-key --add wintermute.pub
 pacman-key --lsign F7FD5492264BB9D0
 
