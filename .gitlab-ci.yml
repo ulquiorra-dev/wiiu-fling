@@ -19,9 +19,6 @@ include:
     - '/packages/sdl2_ttf/ci.yml'
     - '/packages/sdl2_mixer/ci.yml'
     - '/packages/libromfs/ci.yml'
-    # devkitPPC transitional packages
-    - '/packages/libmad/ci.yml'
-    - '/packages/glm/ci.yml'
 
 stages:
     - container # Docker bits
