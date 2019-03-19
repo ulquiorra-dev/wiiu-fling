@@ -2,7 +2,7 @@ build-sdl2:
     stage: libraries
     script:
 #        - pacman --noconfirm -U packages/wut-linux/*.pkg*
-        - source /etc/profile.d/*
+        - export WUT_ROOT=/opt/devkitpro/wut
         - cd $CI_PROJECT_DIR/packages/sdl2
         - chmod -R 0777 .
 #       Set up a builduser, because makepkg -_-
