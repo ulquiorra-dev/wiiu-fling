@@ -2,7 +2,7 @@
 
 pkgname=wiiu-sdl2_ttf
 pkgver=2.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to add TTF font rendering to SDL2"
 url="https://www.libsdl.org/projects/SDL_ttf"
 license=("custom")

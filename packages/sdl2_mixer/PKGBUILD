@@ -2,7 +2,7 @@
 
 pkgname=wiiu-sdl2_mixer
 pkgver=2.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="SDL2 multi-channel audio mixer library"
 url="https://www.libsdl.org/projects/SDL_mixer"
 license=("custom")
