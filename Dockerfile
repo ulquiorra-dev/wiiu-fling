@@ -7,4 +7,4 @@ RUN cd /dkp && chmod +x install-dkp.sh && ./install-dkp.sh && \
     pacman -U --noconfirm https://archive.archlinux.org/packages/c/cmake/cmake-3.13.4-1-x86_64.pkg.tar.xz && \
     pacman -Scc --noconfirm
 
-# change this comment to force a docker rebuild - 1
+# change this comment to force a docker rebuild - 2
