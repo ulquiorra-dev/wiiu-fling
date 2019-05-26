@@ -4,28 +4,24 @@
 _destdir=/opt/devkitpro/portlibs/wiiu
 
 pkgname=wiiu-libromfs
-pkgver=0.4
+pkgver=0.5
 _gittag=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="Implementation of romfs (an in-binary filesystem) for Wii U"
 arch=('any')
 url="https://github.com/yawut/libromfs-wiiu"
 license=('MIT')
 groups=("wiiu-libs")
-options=("staticlibs" "!strip")
+options=("!buildflags" "!strip" "staticlibs")
 source=("$pkgname::git+https://github.com/yawut/libromfs-wiiu#tag=$_gittag")
 md5sums=("SKIP")
 
 makedepends=('git' 'wut' 'cmake')
 
 build() {
-    cd $pkgname
-    mkdir -p build && cd build
-    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/$_destdir" ..
-    make
+    make -C $srcdir/$pkgname
 }
 
 package() {
-    cd $pkgname/build
-    make install
+    make -C $srcdir/$pkgname DESTDIR=$pkgdir install
 }
