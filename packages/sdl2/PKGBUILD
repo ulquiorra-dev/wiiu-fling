@@ -12,7 +12,7 @@ depends=("devkitPPC" "wut" "ppc-libjpeg-turbo" "ppc-mpg123" "ppc-libogg" "ppc-li
 makedepends=("git" "cmake")
 groups=("wiiu-libs")
 source=("https://github.com/yawut/SDL/archive/$_gittag.tar.gz")
-sha256sums=("1a801d3495b7ddb861568661a6cfa55a780c6997db26201214949db27e44620a")
+sha256sums=("c7dcaef9945b2fa6b33d6411bd140380efc1abdca3c0c6657cd95bc664d064a5")
 options=("!buildflags" "!strip" "staticlibs")
 install=sdl2-legacy.install
 
