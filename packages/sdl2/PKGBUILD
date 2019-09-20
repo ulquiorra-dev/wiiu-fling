@@ -1,9 +1,9 @@
 # Maintainer: Ash Logan <ash [at] heyquark [dot] com>
 
 pkgname=wiiu-sdl2
-pkgver=2.0.8_wiiu1
-_gittag=release-2.0.8-wiiu1
-pkgrel=2
+pkgver=2.0.9_wiiu1
+_gittag=release-2.0.9-wiiu1
+pkgrel=1
 pkgdesc="Library for portable access to Wii U video, audio, input"
 url="https://github.com/yawut/SDL"
 license=("custom")
