@@ -4,7 +4,7 @@
 _destdir=/opt/devkitpro/portlibs/wiiu
 
 pkgname=wiiu-libromfs
-pkgver=0.5
+pkgver=0.6
 _gittag=$pkgver
 pkgrel=1
 pkgdesc="Implementation of romfs (an in-binary filesystem) for Wii U"
