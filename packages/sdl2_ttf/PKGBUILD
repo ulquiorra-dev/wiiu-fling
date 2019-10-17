@@ -1,8 +1,8 @@
 # Maintainer: Ash Logan <ash [at] heyquark [dot] com>
 
 pkgname=wiiu-sdl2_ttf
-pkgver=2.0.15
-pkgrel=2
+pkgver=2.0.14
+pkgrel=5
 pkgdesc="Library to add TTF font rendering to SDL2"
 url="https://www.libsdl.org/projects/SDL_ttf"
 license=("custom")
@@ -11,7 +11,7 @@ depends=("devkitPPC" "ppc-freetype" "wiiu-sdl2")
 makedepends=("git" "wiiu-pkg-config")
 groups=("wiiu-libs")
 source=("https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-$pkgver.tar.gz")
-sha256sums=("a9eceb1ad88c1f1545cd7bd28e7cbc0b2c14191d40238f531a15b01b1b22cd33")
+sha256sums=("34db5e20bcf64e7071fe9ae25acaa7d72bdc4f11ab3ce59acc768ab62fe39276")
 options=("!buildflags" "!strip" "staticlibs")
 
 _prefix="/opt/devkitpro/portlibs/wiiu"
