@@ -25,33 +25,36 @@ stages:
     - toolchain # Essential toolchain bits - wut etc.
     - libraries # Libraries or groups of libraries that stand alone
     - libraries2 # Libraries that depend on things from "libraries"
+    - sign
     - deploy
 
 before_script:
     - pacman -Sy
-
-pages:
-    stage: deploy
+      
+sign-pkgs:
+    stage: sign
     before_script:
         - pacman -Sy
         - cd $CI_PROJECT_DIR
         - gpg --batch --import fling-key.pub
         - echo "$FLING_SIGN_KEY" | gpg --batch --import
     script:
-#        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=pages -O out.zip
-#        - unzip out.zip &&
-        - mkdir -p $CI_PROJECT_DIR/public/ && cp $CI_PROJECT_DIR/packages/*/*.pkg* $CI_PROJECT_DIR/public/
-        - cp fling-key.pub $CI_PROJECT_DIR/public/
-        - cd $CI_PROJECT_DIR/public && chmod +x $CI_PROJECT_DIR/sign-packages.sh && $CI_PROJECT_DIR/sign-packages.sh
-        - cd $CI_PROJECT_DIR/public && repo-add --remove --sign wiiu-fling.db.tar.gz `find . -name '*.pkg*' -a ! -name '*.sig'`
+        - chmod +x *.sh && ./deploy-prod.sh
     artifacts:
         paths:
             - 'public'
     only:
         - master
-#    cache:
-#        paths:
-#            - packages/*/*.pkg*
+
+sign-pkgs-staging:
+    stage: sign
+    script:
+        - chmod +x *.sh && ./deploy-staging.sh
+    artifacts:
+        paths:
+            - 'public'
+    except:
+        - master
 
 arch_container:
     stage: container
@@ -67,3 +70,29 @@ arch_container:
     only:
         changes:
             - Dockerfile
+
+pages:
+    stage: deploy
+    script:
+        - echo ok
+    artifacts:
+        paths:
+            - 'public'
+    environment:
+        name: 'Prod'
+        url: "https://fling.heyquark.com"
+    only:
+        - master
+
+deploy-staging:
+    stage: deploy
+    script:
+        - echo ok
+    artifacts:
+        paths:
+            - 'public'
+    environment:
+        name: 'Staging'
+        url: "$CI_PROJECT_URL/-/jobs/$CI_JOB_ID/artifacts/raw/public/"
+    except:
+        - master
