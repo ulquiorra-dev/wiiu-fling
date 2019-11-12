@@ -14,7 +14,7 @@ for i in `find $CI_PROJECT_DIR/packages/*/ -name '*.pkg*' -a ! -name '*.sig'`; d
     echo $CI_PROJECT_DIR/public/$pkgrelpath
     # make that directory
     mkdir -p $CI_PROJECT_DIR/public/$pkgrelpath
-    
+
     # If it's signed, copy it out
     if [ -f $i.sig ]; then
         cp $i{,.sig} $CI_PROJECT_DIR/public/$pkgrelpath
@@ -27,4 +27,8 @@ done
 
 cd $CI_PROJECT_DIR/public && tar cvJf packages.tar.xz packages/
 
-repo-add --sign $CI_PROJECT_DIR/public/wiiu-fling.db.tar.gz `find $CI_PROJECT_DIR/public/packages/*/ -name '*.pkg*' -a ! -name '*.sig'`
+#just for debug
+cd $CI_PROJECT_DIR/public/ && find packages/*/ -name '*.pkg*' -a ! -name '*.sig'
+
+#make the database
+cd $CI_PROJECT_DIR/public/ && repo-add --sign wiiu-fling.db.tar.gz `find packages/*/ -name '*.pkg*' -a ! -name '*.sig'`
