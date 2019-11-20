@@ -1,20 +1,8 @@
 pkg-config:
     stage: toolchain
     script:
-        - cd $CI_PROJECT_DIR/packages/pkg-config
-        - chmod -R 0777 .
-#       Set up a builduser, because makepkg -_-
-        - useradd builduser -m
-        - passwd -d builduser
-        - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
-#       Build!
-        - sudo -E -u builduser makepkg -s --noconfirm
+        - *buildsetup
+        - *buildscript
     artifacts:
         paths:
             - 'packages/pkg-config/*.pkg*'
-#    only:
-#        changes:
-#            - 'packages/pkg-config/PKGBUILD'
-#            - 'packages/pkg-config/ci.yml'
-#        variables:
-#            - $TRY_CACHE == "yes"

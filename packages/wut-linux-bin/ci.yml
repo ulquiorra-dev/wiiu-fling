@@ -1,20 +1,8 @@
 wut-linux-bin:
     stage: toolchain
     script:
-        - cd $CI_PROJECT_DIR/packages/wut-linux-bin
-        - chmod -R 0777 .
-#       Set up a builduser, because makepkg -_-
-        - useradd builduser -m
-        - passwd -d builduser
-        - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
-#       Build!
-        - sudo -E -u builduser makepkg -s --noconfirm
+        - *buildsetup
+        - *buildscript
     artifacts:
         paths:
             - 'packages/wut-linux-bin/*.pkg*'
-#    only:
-#        changes:
-#            - 'packages/wut-linux-bin/PKGBUILD'
-#            - 'packages/wut-linux-bin/ci.yml'
-#        variables:
-#            - $TRY_CACHE == "yes"

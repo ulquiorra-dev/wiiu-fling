@@ -1,25 +1,12 @@
 sdl2_mixer:
     stage: libraries2
     script:
+        - *buildsetup
         - >
             pacman --noconfirm -U
-            packages/sdl2/*.pkg*
+            $CI_PROJECT_DIR/packages/sdl2/*.pkg*
 
-        - source /etc/profile.d/*
-        - cd $CI_PROJECT_DIR/packages/sdl2_mixer
-        - chmod -R 0777 .
-#       Set up a builduser, because makepkg -_-
-        - useradd builduser -m
-        - passwd -d builduser
-        - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
-#       Build!
-        - sudo -E -u builduser makepkg -s --noconfirm
+        - *buildscript
     artifacts:
         paths:
             - 'packages/sdl2_mixer/*.pkg*'
-#    only:
-#        changes:
-#            - 'packages/sdl2_mixer/PKGBUILD'
-#            - 'packages/sdl2_mixer/ci.yml'
-#        variables:
-#            - $TRY_CACHE == "yes"

@@ -1,22 +1,13 @@
 libutils:
     stage: libraries2
     script:
+        - *buildsetup
         - >
             pacman --noconfirm -U
-            packages/curl-headers/*.pkg*
-            packages/libdynamiclibs/*.pkg*
+            $CI_PROJECT_DIR/packages/curl-headers/*.pkg*
+            $CI_PROJECT_DIR/packages/libdynamiclibs/*.pkg*
 
-        - source /etc/profile.d/*
-        - cd $CI_PROJECT_DIR/packages/libutils
-        - chmod -R 0777 .
-
-#       Set up a builduser, because makepkg -_-
-        - useradd builduser -m
-        - passwd -d builduser
-        - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
-
-#       Build!
-        - sudo -E -u builduser makepkg -s --noconfirm
+        - *buildscript
     artifacts:
         paths:
             - 'packages/libutils/*.pkg*'
