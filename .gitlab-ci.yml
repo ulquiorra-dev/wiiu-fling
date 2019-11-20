@@ -1,25 +1,5 @@
 image: registry.gitlab.com/quarktheawesome/wiiu-fling/ci:latest
 
-variables:
-    TRY_CACHE: "no"
-
-include:
-    - '/packages/wut-linux/ci.yml'
-    - '/packages/wut-linux-bin/ci.yml'
-    - '/packages/wut-osx/ci.yml'
-    - '/packages/wut-msys2/ci.yml'
-    - '/packages/pkg-config/ci.yml'
-    - '/packages/libiosuhax/ci.yml'
-    - '/packages/libdynamiclibs/ci.yml'
-    - '/packages/libutils/ci.yml'
-    - '/packages/curl-headers/ci.yml'
-    - '/packages/sdl2/ci.yml'
-    - '/packages/sdl2_gfx/ci.yml'
-    - '/packages/sdl2_image/ci.yml'
-    - '/packages/sdl2_ttf/ci.yml'
-    - '/packages/sdl2_mixer/ci.yml'
-    - '/packages/libromfs/ci.yml'
-
 stages:
     - container # Docker bits
     - toolchain # Essential toolchain bits - wut etc.
@@ -40,6 +20,23 @@ stages:
 
 .buildscript: &buildscript
     - sudo -E -u builduser makepkg -s --noconfirm
+
+include:
+    - '/packages/wut-linux/ci.yml'
+    - '/packages/wut-linux-bin/ci.yml'
+    - '/packages/wut-osx/ci.yml'
+    - '/packages/wut-msys2/ci.yml'
+    - '/packages/pkg-config/ci.yml'
+    - '/packages/libiosuhax/ci.yml'
+    - '/packages/libdynamiclibs/ci.yml'
+    - '/packages/libutils/ci.yml'
+    - '/packages/curl-headers/ci.yml'
+    - '/packages/sdl2/ci.yml'
+    - '/packages/sdl2_gfx/ci.yml'
+    - '/packages/sdl2_image/ci.yml'
+    - '/packages/sdl2_ttf/ci.yml'
+    - '/packages/sdl2_mixer/ci.yml'
+    - '/packages/libromfs/ci.yml'
 
 sign-pkgs:
     stage: sign
