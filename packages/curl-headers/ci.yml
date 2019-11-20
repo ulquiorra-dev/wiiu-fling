@@ -1,4 +1,4 @@
-build-curl-headers:
+curl-headers:
     stage: toolchain
     script:
         - cd $CI_PROJECT_DIR/packages/curl-headers

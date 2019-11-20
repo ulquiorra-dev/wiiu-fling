@@ -1,4 +1,4 @@
-build-sdl2-ttf:
+sdl2_ttf:
     stage: libraries2
     script:
         - >

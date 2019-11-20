@@ -1,4 +1,4 @@
-build-pkg-config:
+pkg-config:
     stage: toolchain
     script:
         - cd $CI_PROJECT_DIR/packages/pkg-config

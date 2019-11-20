@@ -1,4 +1,4 @@
-build-libiosuhax:
+libiosuhax:
     stage: libraries
     script:
 #        - wget https://gitlab.com/QuarkTheAwesome/wiiu-fling/-/jobs/artifacts/master/download?job=build-wut -O wut.zip && unzip wut.zip

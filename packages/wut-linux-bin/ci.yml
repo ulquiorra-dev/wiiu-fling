@@ -1,4 +1,4 @@
-build-wut-linux-bin:
+wut-linux-bin:
     stage: toolchain
     script:
         - cd $CI_PROJECT_DIR/packages/wut-linux-bin

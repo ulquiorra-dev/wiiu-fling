@@ -1,4 +1,4 @@
-build-sdl2-mixer:
+sdl2_mixer:
     stage: libraries2
     script:
         - >

@@ -1,4 +1,4 @@
-build-wut-msys2:
+wut-msys2:
     stage: toolchain
     before_script:
         - echo prebuilt!

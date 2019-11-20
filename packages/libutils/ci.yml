@@ -1,4 +1,4 @@
-build-libutils:
+libutils:
     stage: libraries2
     script:
         - >

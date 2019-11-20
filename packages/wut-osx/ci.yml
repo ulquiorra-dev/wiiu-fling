@@ -1,4 +1,4 @@
-build-wut-osx:
+wut-osx:
     stage: toolchain
     script:
         - cd $CI_PROJECT_DIR/packages/wut-osx

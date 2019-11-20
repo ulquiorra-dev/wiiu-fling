@@ -1,4 +1,4 @@
-build-sdl2:
+sdl2:
     stage: libraries
     script:
 #        - pacman --noconfirm -U packages/wut-linux/*.pkg*

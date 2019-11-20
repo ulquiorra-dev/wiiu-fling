@@ -1,4 +1,4 @@
-build-sdl2-gfx:
+sdl2_gfx:
     stage: libraries2
     script:
         - >
