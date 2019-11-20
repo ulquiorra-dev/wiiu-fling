@@ -1,5 +1,6 @@
 sdl2_mixer:
     stage: libraries2
+    extends: .build
     before_script:
         - >
             pacman --noconfirm -U
