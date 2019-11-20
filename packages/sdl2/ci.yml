@@ -1,10 +1,9 @@
 sdl2:
     stage: libraries
-    script:
-        - *buildsetup
+    extends: .build
+    before_script:
         - export WUT_ROOT=/opt/devkitpro/wut
         - export PATH="$PATH:/opt/devkitpro/devkitPPC/bin"
-        - *buildscript
     artifacts:
         paths:
             - 'packages/sdl2/*.pkg*'

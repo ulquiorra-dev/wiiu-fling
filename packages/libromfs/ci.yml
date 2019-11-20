@@ -1,9 +1,8 @@
 libromfs:
     stage: libraries
-    script:
-        - *buildsetup
+    extends: .build
+    before_script:
         - export WUT_ROOT=/opt/devkitpro/wut
-        - *buildscript
     artifacts:
         paths:
             - 'packages/libromfs/*.pkg*'

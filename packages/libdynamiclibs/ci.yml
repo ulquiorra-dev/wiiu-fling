@@ -1,12 +1,10 @@
 libdynamiclibs:
     stage: libraries
-    script:
-        - *buildsetup
+    extends: .build
+    before_script:
         - >
             pacman --noconfirm -U
             $CI_PROJECT_DIR/packages/curl-headers/*.pkg*
-
-        - *buildscript
     artifacts:
         paths:
             - 'packages/libdynamiclibs/*.pkg*'

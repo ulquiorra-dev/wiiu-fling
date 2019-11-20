@@ -7,9 +7,3 @@ wut-msys2:
     artifacts:
         paths:
             - 'packages/wut-msys2/*.pkg*'
-#    only:
-#        changes:
-#            - 'packages/wut-msys2/PKGBUILD'
-#            - 'packages/wut-msys2/ci.yml'
-#        variables:
-#            - $TRY_CACHE == "yes"

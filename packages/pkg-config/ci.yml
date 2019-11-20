@@ -1,8 +1,6 @@
 pkg-config:
     stage: toolchain
-    script:
-        - *buildsetup
-        - *buildscript
+    extends: .build
     artifacts:
         paths:
             - 'packages/pkg-config/*.pkg*'

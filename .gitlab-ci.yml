@@ -8,18 +8,15 @@ stages:
     - sign
     - deploy
 
-.buildsetup: &buildsetup
-    - pacman -Sy
-    - source /etc/profile.d/*
-    - cd $CI_PROJECT_DIR/packages/$CI_JOB_NAME
-    - chmod -R 0777 .
-#   Set up a builduser, because makepkg be like that
-    - useradd builduser -m
-    - passwd -d builduser
-    - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
-
-.buildscript: &buildscript
-    - sudo -E -u builduser makepkg -s --noconfirm
+.build:
+    script:
+        - source /etc/profile.d/*
+        - cd $CI_PROJECT_DIR/packages/$CI_JOB_NAME
+        - chmod -R 0777 .
+        - useradd builduser -m
+        - passwd -d builduser
+        - echo "builduser ALL=(ALL) ALL" | tee -a /etc/sudoers
+        - sudo -E -u builduser makepkg -s --noconfirm
 
 include:
     - '/packages/wut-linux/ci.yml'

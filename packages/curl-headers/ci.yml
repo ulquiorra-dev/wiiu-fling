@@ -1,9 +1,6 @@
 curl-headers:
     stage: toolchain
-    script:
-        - *buildsetup
-#       Build!
-        - *buildscript
+    extends: .build
     artifacts:
         paths:
             - 'packages/curl-headers/*.pkg*'

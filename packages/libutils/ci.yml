@@ -1,13 +1,11 @@
 libutils:
     stage: libraries2
-    script:
-        - *buildsetup
+    extends: .build
+    before_script:
         - >
             pacman --noconfirm -U
             $CI_PROJECT_DIR/packages/curl-headers/*.pkg*
             $CI_PROJECT_DIR/packages/libdynamiclibs/*.pkg*
-
-        - *buildscript
     artifacts:
         paths:
             - 'packages/libutils/*.pkg*'

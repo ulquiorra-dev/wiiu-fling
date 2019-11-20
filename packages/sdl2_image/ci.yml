@@ -1,12 +1,10 @@
 sdl2_image:
     stage: libraries2
-    script:
-        - *buildsetup
+    extends: .build
+    before_script:
         - >
             pacman --noconfirm -U
             $CI_PROJECT_DIR/packages/sdl2/*.pkg*
-
-        - *buildscript
     artifacts:
         paths:
             - 'packages/sdl2_image/*.pkg*'
