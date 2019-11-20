@@ -78,6 +78,7 @@ pages:
     stage: deploy
     script:
         - echo
+    dependencies: ["sign-pkgs"]
     artifacts:
         paths:
             - 'public'
@@ -91,6 +92,7 @@ deploy-staging:
     stage: deploy
     script:
         - echo
+    dependencies: ["sign-pkgs-staging"]
     artifacts:
         paths:
             - 'public'
