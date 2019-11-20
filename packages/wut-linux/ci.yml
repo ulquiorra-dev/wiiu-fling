@@ -5,4 +5,4 @@ wut-linux:
         - *buildscript
     artifacts:
         paths:
-            - 'packages/wut-linux/*.pkg*'"
+            - 'packages/wut-linux/*.pkg*'
