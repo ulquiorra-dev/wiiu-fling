@@ -1,3 +1,6 @@
+.deps: &deps
+    - curl-headers
+
 libdynamiclibs:
     stage: libraries
     extends: .build
@@ -5,6 +8,10 @@ libdynamiclibs:
         - >
             pacman --noconfirm -U
             $CI_PROJECT_DIR/packages/curl-headers/*.pkg*
+    dependencies:
+        - *deps
+    needs:
+        - *deps
     artifacts:
         paths:
             - 'packages/libdynamiclibs/*.pkg*'
