@@ -5,6 +5,8 @@ sdl2_gfx:
         - >
             pacman --noconfirm -U
             $CI_PROJECT_DIR/packages/sdl2/*.pkg*
+    dependencies: ["sdl2"]
+    needs: ["sdl2"]
     artifacts:
         paths:
             - 'packages/sdl2_gfx/*.pkg*'

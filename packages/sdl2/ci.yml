@@ -1,6 +1,7 @@
 sdl2:
     stage: libraries
     extends: .build
+    dependencies: []
     before_script:
         - export WUT_ROOT=/opt/devkitpro/wut
         - export PATH="$PATH:/opt/devkitpro/devkitPPC/bin"

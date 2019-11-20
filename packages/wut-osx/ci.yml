@@ -1,6 +1,7 @@
 wut-osx:
     stage: toolchain
     extends: .build
+    dependencies: []
     artifacts:
         paths:
             - 'packages/wut-osx/*.pkg*'

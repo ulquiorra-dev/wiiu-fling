@@ -1,6 +1,7 @@
 pkg-config:
     stage: toolchain
     extends: .build
+    dependencies: []
     artifacts:
         paths:
             - 'packages/pkg-config/*.pkg*'

@@ -1,6 +1,7 @@
 libiosuhax:
     stage: libraries
     extends: .build
+    dependencies: []
     artifacts:
         paths:
             - 'packages/libiosuhax/*.pkg*'

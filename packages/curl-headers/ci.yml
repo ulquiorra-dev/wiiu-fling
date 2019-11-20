@@ -1,6 +1,7 @@
 curl-headers:
     stage: toolchain
     extends: .build
+    dependencies: []
     artifacts:
         paths:
             - 'packages/curl-headers/*.pkg*'

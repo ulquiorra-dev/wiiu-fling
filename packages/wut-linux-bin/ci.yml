@@ -1,6 +1,7 @@
 wut-linux-bin:
     stage: toolchain
     extends: .build
+    dependencies: []
     artifacts:
         paths:
             - 'packages/wut-linux-bin/*.pkg*'

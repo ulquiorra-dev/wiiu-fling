@@ -1,5 +1,6 @@
 wut-msys2:
     stage: toolchain
+    dependencies: []
     before_script:
         - echo prebuilt!
     script:
