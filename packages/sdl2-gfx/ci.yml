@@ -1,4 +1,4 @@
-sdl2_image:
+sdl2-gfx:
     stage: libraries2
     extends: .build
     before_script:
@@ -7,4 +7,4 @@ sdl2_image:
             $CI_PROJECT_DIR/packages/sdl2/*.pkg*
     artifacts:
         paths:
-            - 'packages/sdl2_image/*.pkg*'
+            - 'packages/sdl2-gfx/*.pkg*'

@@ -1,4 +1,4 @@
-sdl2_ttf:
+sdl2-ttf:
     stage: libraries2
     extends: .build
     before_script:
@@ -7,4 +7,4 @@ sdl2_ttf:
             $CI_PROJECT_DIR/packages/sdl2/*.pkg*
     artifacts:
         paths:
-            - 'packages/sdl2_ttf/*.pkg*'
+            - 'packages/sdl2-ttf/*.pkg*'
