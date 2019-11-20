@@ -1,9 +1,10 @@
-sdl2-mixer:
+sdl2_gfx:
     stage: libraries2
+    extends: .build
     before_script:
         - >
             pacman --noconfirm -U
             $CI_PROJECT_DIR/packages/sdl2/*.pkg*
     artifacts:
         paths:
-            - 'packages/sdl2-mixer/*.pkg*'
+            - 'packages/sdl2_gfx/*.pkg*'

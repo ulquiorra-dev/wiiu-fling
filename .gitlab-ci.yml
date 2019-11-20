@@ -29,10 +29,10 @@ include:
     - '/packages/libutils/ci.yml'
     - '/packages/curl-headers/ci.yml'
     - '/packages/sdl2/ci.yml'
-    - '/packages/sdl2-gfx/ci.yml'
-    - '/packages/sdl2-image/ci.yml'
-    - '/packages/sdl2-ttf/ci.yml'
-    - '/packages/sdl2-mixer/ci.yml'
+    - '/packages/sdl2_gfx/ci.yml'
+    - '/packages/sdl2_image/ci.yml'
+    - '/packages/sdl2_ttf/ci.yml'
+    - '/packages/sdl2_mixer/ci.yml'
     - '/packages/libromfs/ci.yml'
 
 sign-pkgs:
