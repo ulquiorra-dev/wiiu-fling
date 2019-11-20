@@ -25,10 +25,13 @@ for i in `find $CI_PROJECT_DIR/packages/*/ -name '*.pkg*' -a ! -name '*.sig'`; d
     fi
 done
 
-cd $CI_PROJECT_DIR/public && tar cvJf packages.tar.xz packages/
+cd $CI_PROJECT_DIR/public/ && tar cvJf packages.tar.xz packages/
+
+#move everything to the root directory and remove the nested stuff
+cd $CI_PROJECT_DIR/public/ && cp -v packages/*/*.pkg* . && rm -rf packages/
 
 #just for debug
-cd $CI_PROJECT_DIR/public/ && find packages/*/ -name '*.pkg*' -a ! -name '*.sig'
+cd $CI_PROJECT_DIR/public/ && ls -al
 
 #make the database
-cd $CI_PROJECT_DIR/public/ && repo-add --sign wiiu-fling.db.tar.gz `find packages/*/ -name '*.pkg*' -a ! -name '*.sig'`
+cd $CI_PROJECT_DIR/public/ && repo-add --sign wiiu-fling.db.tar.gz `find . -name '*.pkg*' -a ! -name '*.sig'`
