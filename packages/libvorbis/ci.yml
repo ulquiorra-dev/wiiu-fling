@@ -1,0 +1,7 @@
+libvorbis:
+    stage: libraries
+    extends: .build
+    dependencies: []
+    artifacts:
+        paths:
+            - 'packages/libvorbis/*.pkg*'
