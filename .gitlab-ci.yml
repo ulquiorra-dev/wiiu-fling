@@ -36,6 +36,10 @@ include:
     - '/packages/sdl2_ttf/ci.yml'
     - '/packages/sdl2_mixer/ci.yml'
     - '/packages/libromfs/ci.yml'
+    - '/packages/libmodplug/ci.yml'
+    - '/packages/libvorbis/ci.yml'
+    - '/packages/opus/ci.yml'
+    - '/packages/opusfile/ci.yml'
 
 sign-pkgs:
     stage: sign
