@@ -1,17 +1,17 @@
 # Maintainer: Ash Logan <ash [at] heyquark [dot] com>
 
 pkgname=wiiu-sdl2_image
-pkgver=2.0.4
-pkgrel=6
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="Library to add various image formats to SDL2"
 url="https://www.libsdl.org/projects/SDL_image"
-license=("custom")
+license=("zlib")
 arch=("any")
 depends=("devkitPPC" "ppc-libpng" "ppc-libjpeg-turbo" "wiiu-sdl2")
 makedepends=("wiiu-pkg-config")
 groups=("wiiu-libs")
 source=("https://www.libsdl.org/projects/SDL_image/release/SDL2_image-$pkgver.tar.gz")
-sha256sums=("e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac")
+sha256sums=("bdd5f6e026682f7d7e1be0b6051b209da2f402a2dd8bd1c4bd9c25ad263108d0")
 options=("!buildflags" "!strip" "staticlibs")
 
 _prefix="/opt/devkitpro/portlibs/wiiu"
