@@ -1,0 +1,31 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+pkgname=ppc-libmodplug
+pkgver=0.8.9.0
+pkgrel=1
+pkgdesc="A MOD playing library"
+url="https://modplug-xmms.sourceforge.net"
+license=("custom")
+arch=("any")
+depends=("devkitPPC")
+makedepends=("wiiu-pkg-config")
+groups=("wiiu-libs")
+source=("https://downloads.sourceforge.net/modplug-xmms/libmodplug-${pkgver}.tar.gz")
+sha256sums=("457ca5a6c179656d66c01505c0d95fafaead4329b9dbaa0f997d00a3508ad9de")
+options=("!buildflags" "!strip" "staticlibs")
+
+_prefix="/opt/devkitpro/portlibs/ppc"
+
+build() {
+    cd libmodplug-${pkgver}
+    ./configure \
+        --prefix=$_prefix \
+        --host=powerpc-eabi \
+        --disable-shared
+    make
+}
+
+package() {
+    cd libmodplug-${pkgver}
+    make install DESTDIR=$pkgdir
+}

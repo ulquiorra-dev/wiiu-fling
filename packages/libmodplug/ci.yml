@@ -1,0 +1,7 @@
+libmodplug:
+    stage: libraries
+    extends: .build
+    dependencies: []
+    artifacts:
+        paths:
+            - 'packages/libmodplug/*.pkg*'
