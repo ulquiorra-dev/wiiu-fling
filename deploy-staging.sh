@@ -11,9 +11,18 @@ for i in `find $CI_PROJECT_DIR/packages/*/ -name '*.pkg*' -a ! -name '*.sig'`; d
     echo $CI_PROJECT_DIR/public/$pkgrelpath
     # make that directory
     mkdir -p $CI_PROJECT_DIR/public/$pkgrelpath
-    
+
     # Copy the package
     cp $i $CI_PROJECT_DIR/public/$pkgrelpath
 done
 
-repo-add $CI_PROJECT_DIR/public/wiiu-fling-staging.db.tar.gz `find $CI_PROJECT_DIR/public/packages/*/ -name '*.pkg*' -a ! -name '*.sig'`
+cd $CI_PROJECT_DIR/public/ && tar cvJf packages.tar.xz packages/
+
+#move everything to the root directory and remove the nested stuff
+cd $CI_PROJECT_DIR/public/ && cp -v packages/*/*.pkg* . && rm -rf packages/
+
+#just for debug
+cd $CI_PROJECT_DIR/public/ && ls -al
+
+#make the database
+cd $CI_PROJECT_DIR/public/ && repo-add --sign wiiu-fling-staging.db.tar.gz `find . -name '*.pkg*' -a ! -name '*.sig'`
