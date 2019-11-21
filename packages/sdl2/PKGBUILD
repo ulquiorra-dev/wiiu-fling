@@ -1,18 +1,18 @@
 # Maintainer: Ash Logan <ash [at] heyquark [dot] com>
 
 pkgname=wiiu-sdl2
-pkgver=2.0.9_wiiu1
-_gittag=release-2.0.9-wiiu1
+pkgver=2.0.9_wiiu2
+_gittag=release-2.0.9-wiiu2
 pkgrel=1
 pkgdesc="Library for portable access to Wii U video, audio, input"
 url="https://github.com/yawut/SDL"
 license=("custom")
 arch=("any")
-depends=("devkitPPC" "wut" "ppc-libjpeg-turbo" "ppc-mpg123" "ppc-libogg" "ppc-libvorbisidec" "ppc-libpng" "ppc-freetype")
+depends=("devkitPPC" "wut")
 makedepends=("git" "cmake")
 groups=("wiiu-libs")
 source=("https://github.com/yawut/SDL/archive/$_gittag.tar.gz")
-sha256sums=("c7dcaef9945b2fa6b33d6411bd140380efc1abdca3c0c6657cd95bc664d064a5")
+sha256sums=("eb67b9f8bcf44fdd2879643a8719fe5d8058656d5c9fce73f5c61d83b346f989")
 options=("!buildflags" "!strip" "staticlibs")
 install=sdl2-legacy.install
 
@@ -21,14 +21,14 @@ _prefix="/opt/devkitpro/portlibs/wiiu"
 prepare() {
     cd SDL-$_gittag
     mkdir -p build
-    cd build
-    cmake .. \
-        -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/wut/share/wut.toolchain.cmake \
-        -DCMAKE_INSTALL_PREFIX=$_prefix
 }
 
 build() {
     cd SDL-$_gittag/build
+    cmake .. \
+        -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/wut/share/wut.toolchain.cmake \
+        -DCMAKE_BUILD_TYPE="Release"
+        -DCMAKE_INSTALL_PREFIX=$_prefix
     make
 }
 
