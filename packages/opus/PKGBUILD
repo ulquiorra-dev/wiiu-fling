@@ -1,0 +1,41 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+pkgname=ppc-opus
+pkgver=1.3.1
+pkgrel=1
+pkgdesc="Opus audio decoder"
+url="http://opus-codec.org/"
+license=("custom")
+arch=("any")
+depends=("devkitPPC")
+makedepends=("wiiu-pkg-config")
+groups=("wiiu-libs")
+source=("https://archive.mozilla.org/pub/opus/opus-$pkgver.tar.gz")
+sha256sums=("65b58e1e25b2a114157014736a3d9dfeaad8d41be1c8179866f144a2fb44ff9d")
+options=("!buildflags" "!strip" "staticlibs")
+
+_prefix="/opt/devkitpro/portlibs/ppc"
+
+prepare() {
+    cd opus-$pkgver
+    # ssp doesn't seem to work
+    sed -i "s/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=0/g" configure
+}
+
+build() {
+    cd opus-$pkgver
+    ./configure \
+        --prefix=$_prefix \
+        --host=powerpc-eabi \
+        --disable-shared \
+        --disable-dependency-tracking \
+        --enable-float-approx \
+        --disable-doc \
+        --disable-extra-programs
+    make
+}
+
+package() {
+    cd opus-$pkgver
+    make install DESTDIR=$pkgdir
+}

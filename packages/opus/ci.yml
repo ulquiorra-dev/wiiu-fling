@@ -1,0 +1,7 @@
+opus:
+    stage: libraries
+    extends: .build
+    dependencies: []
+    artifacts:
+        paths:
+            - 'packages/opus/*.pkg*'
