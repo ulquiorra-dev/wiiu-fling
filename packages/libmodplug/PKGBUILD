@@ -17,6 +17,11 @@ options=("!buildflags" "!strip" "staticlibs")
 _prefix="/opt/devkitpro/portlibs/ppc"
 
 build() {
+    export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitPPC/bin:$PATH
+    export PATH=/opt/devkitpro/portlibs/ppc/bin:$PATH
+    export PATH=$_prefix/bin:$PATH
+    export PKG_CONFIG=/opt/devkitpro/portlibs/wiiu/bin/powerpc-eabi-pkg-config
+
     cd libmodplug-${pkgver}
     ./configure \
         --prefix=$_prefix \
