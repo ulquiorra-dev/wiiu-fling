@@ -1,0 +1,41 @@
+# Maintainer: Ash Logan <ash [at] heyquark [dot] com>
+
+pkgname=ppc-opusfile
+pkgver=0.11
+pkgrel=1
+pkgdesc="Parser and streamer for .opus files"
+url="http://opus-codec.org/"
+license=("custom")
+arch=("any")
+depends=("devkitPPC" "ppc-libogg")
+makedepends=("wiiu-pkg-config")
+groups=("wiiu-libs")
+source=("https://downloads.xiph.org/releases/opus/opusfile-$pkgver.tar.gz")
+sha256sums=("74ce9b6cf4da103133e7b5c95df810ceb7195471e1162ed57af415fabf5603bf")
+options=("!buildflags" "!strip" "staticlibs")
+
+_prefix="/opt/devkitpro/portlibs/ppc"
+
+build() {
+    export PATH=/opt/devkitpro/tools/bin:/opt/devkitpro/devkitPPC/bin:$PATH
+    export PATH=/opt/devkitpro/portlibs/ppc/bin:$PATH
+    export PATH=$_prefix/bin:$PATH
+    export PKG_CONFIG=/opt/devkitpro/portlibs/wiiu/bin/powerpc-eabi-pkg-config
+
+    cd opusfile-$pkgver
+    ./configure \
+        --disable-shared \
+        --prefix=$_prefix \
+        --host=powerpc-eabi \
+        --disable-dependency-tracking \
+        --disable-http \
+        --disable-examples \
+        --disable-doc
+
+    make
+}
+
+package() {
+    cd opusfile-$pkgver
+    make install DESTDIR=$pkgdir
+}

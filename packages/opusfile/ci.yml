@@ -1,0 +1,12 @@
+opusfile:
+    stage: libraries2
+    extends: .build
+    dependencies: ["opus"]
+    needs: ["opus"]
+    before_script:
+        - >
+            pacman --noconfirm -U
+            $CI_PROJECT_DIR/packages/opus/*.pkg*
+    artifacts:
+        paths:
+            - 'packages/opusfile/*.pkg*'
