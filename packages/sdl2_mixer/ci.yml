@@ -5,11 +5,12 @@ sdl2_mixer:
         - >
             pacman --noconfirm -U
             $CI_PROJECT_DIR/packages/sdl2/*.pkg*
+            $CI_PROJECT_DIR/packages/opus/*.pkg*
             $CI_PROJECT_DIR/packages/opusfile/*.pkg*
             $CI_PROJECT_DIR/packages/libvorbis/*.pkg*
             $CI_PROJECT_DIR/packages/libmodplug/*.pkg*
-    dependencies: ["sdl2", "opusfile", "libvorbis", "libmodplug"]
-    needs: ["sdl2", "opusfile", "libvorbis", "libmodplug"]
+    dependencies: ["sdl2", "opus", "opusfile", "libvorbis", "libmodplug"]
+    needs: ["sdl2", "opus", "opusfile", "libvorbis", "libmodplug"]
     artifacts:
         paths:
             - 'packages/sdl2_mixer/*.pkg*'

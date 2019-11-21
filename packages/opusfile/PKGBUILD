@@ -2,12 +2,12 @@
 
 pkgname=ppc-opusfile
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser and streamer for .opus files"
 url="http://opus-codec.org/"
 license=("custom")
 arch=("any")
-depends=("devkitPPC" "ppc-libogg")
+depends=("devkitPPC" "ppc-libogg" "ppc-opus")
 makedepends=("wiiu-pkg-config")
 groups=("wiiu-libs")
 source=("https://downloads.xiph.org/releases/opus/opusfile-$pkgver.tar.gz")
