@@ -7,7 +7,7 @@ pkgdesc="SDL2 multi-channel audio mixer library"
 url="https://www.libsdl.org/projects/SDL_mixer"
 license=("custom")
 arch=("any")
-depends=("devkitPPC" "ppc-mpg123" "wiiu-sdl2")
+depends=("devkitPPC" "ppc-mpg123" "ppc-libvorbis" "ppc-libmodplug" "ppc-opusfile" "wiiu-sdl2")
 makedepends=("wiiu-pkg-config")
 groups=("wiiu-libs")
 source=("https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$pkgver.tar.gz"
@@ -33,9 +33,9 @@ build() {
 
     ./autogen.sh
 
-    # The configure script doesn't check pkg-config for mpg123, so let's do that
-    export CPPFLAGS=$($PKG_CONFIG --cflags-only-I libmpg123)
-    export LDFLAGS=$($PKG_CONFIG --libs-only-L libmpg123)
+    # The configure script doesn't check pkg-config, so let's do that
+    export CPPFLAGS=$($PKG_CONFIG --cflags-only-I libmpg123 libmodplug opusfile vorbisfile)
+    export LDFLAGS=$($PKG_CONFIG --libs-only-L libmpg123 libmodplug opusfile vorbisfile)
 
     ./configure \
         --prefix=$_prefix \

@@ -1,12 +1,15 @@
 sdl2_mixer:
-    stage: libraries2
+    stage: libraries3
     extends: .build
     before_script:
         - >
             pacman --noconfirm -U
             $CI_PROJECT_DIR/packages/sdl2/*.pkg*
-    dependencies: ["sdl2"]
-    needs: ["sdl2"]
+            $CI_PROJECT_DIR/packages/opusfile/*.pkg*
+            $CI_PROJECT_DIR/packages/libvorbis/*.pkg*
+            $CI_PROJECT_DIR/packages/libmodplug/*.pkg*
+    dependencies: ["sdl2", "opusfile", "libvorbis", "libmodplug"]
+    needs: ["sdl2", "opusfile", "libvorbis", "libmodplug"]
     artifacts:
         paths:
             - 'packages/sdl2_mixer/*.pkg*'
